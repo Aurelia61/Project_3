@@ -11,19 +11,34 @@
 
 <body>
 
-<!-- <h1>Index du blog</h1> -->
-<br>
-<h2>Voici les derniers articles</h2>
-<br>
-{% for article in articles%}
-    <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
-    <p>{{article.pickup_line}}</p>
+    <!-- <h1>Index du blog</h1> -->
     <br>
-{%endfor%}
+    <h2>Voici les derniers articles</h2>
+    <br>
 
-{%block body %}
-    
-{% endblock %}
+
+    {%block body %}
+
+    {% if latest_articles %}
+    <ul>
+        {% for article in latest_articles %}
+        <li>
+            <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
+            <p>{{article.pickup_line}}</p>
+        {% endfor %}
+        </li>
+    </ul>
+    {% endif %}
+
+    {% endblock %}
 </body>
 
 </html>
+
+
+<!--* quand ce n'était pas des vues génériques -->
+<!-- {% for article in articles%}
+    <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
+    <p>{{article.pickup_line}}</p>
+    <br>
+{%endfor%} -->

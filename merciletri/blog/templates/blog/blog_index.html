@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<head>
+    <title>{%block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    {%block styles %}{% endblock %}
+</head>
+
+<body>
+
+<!-- <h1>Index du blog</h1> -->
+<br>
+<h2>Voici les derniers articles</h2>
+<br>
+{% for article in articles%}
+    <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
+    <p>{{article.pickup_line}}</p>
+    <br>
+{%endfor%}
+
+{%block body %}
+    
+{% endblock %}
+</body>
+
+</html>

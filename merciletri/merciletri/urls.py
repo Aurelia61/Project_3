@@ -18,6 +18,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-    path('blog/', include('blog.urls'))
+    path('', include('blog.urls')),   #todo à modifier quand j'aurai créé ma view home ! qui m'ai rataché à aucune url pour l'instant !!!!
+    path('blog/', include('blog.urls')),
+    path('search/', include('search.urls')),
+    path('private/', include('private.urls')),
+    path('game/', include('game.urls')),
 ]

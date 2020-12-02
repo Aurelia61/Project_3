@@ -1,1 +1,39 @@
 <h1>Recherche en cours...</h1>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Recherche</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'search/search.css' %}">
+
+</head>
+
+<body>
+    <form action="{% url 'search:search_view'  %}" method="post">            
+        {% csrf_token %}
+
+        <div>
+            {% for city in Cities %}
+                <input type="radio" 
+                    name="City" 
+                    id="City{{ forloop.counter }}"
+                    value="{{ City.id }}">
+                <label for="City{{ forloop.counter }}">
+                    {{ City.name }}
+                </label>
+            {% endfor %}
+        </div>
+
+        <input type="submit" value="Je donne ma réponse">
+
+    </form>
+
+
+</body>
+
+</html>

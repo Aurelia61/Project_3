@@ -11,6 +11,23 @@ class City(models.Model):
     )
 
 
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.name}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Ville"
+        verbose_name_plural = "Villes"
+        ordering = ["name"]
+
 class Zone(models.Model):
     """
         manage the Zone class
@@ -27,16 +44,50 @@ class Zone(models.Model):
         on_delete = models.PROTECT,   
     )
 
+
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.name}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Zone"
+        verbose_name_plural = "Zones"
+        ordering = ["name"]
+
 class GarbageType(models.Model):
     """
         manage the Garbage Type class
     """
 
     name = models.CharField(
-        "Type de déchets",
+        "Type de déchet",
         max_length = 100
     )
 
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.name}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Type de déchet"
+        verbose_name_plural = "Types de déchet"
+        ordering = ["name"]
 
 class Garbage(models.Model):
     """
@@ -53,6 +104,23 @@ class Garbage(models.Model):
         # if a type is deleted, all the dependant garbages will be kept
         on_delete = models.PROTECT,   
     )
+
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.name}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Déchet"
+        verbose_name_plural = "Déchets"
+        ordering = ["name"]
 
 class Time(models.Model):
     """
@@ -77,6 +145,25 @@ class Time(models.Model):
         blank = True
     )
 
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        #todo si collecttime vide afficher les autres champs
+
+        return f"{self.collecttime}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Horaire"
+        verbose_name_plural = "Horaires"
+        ordering = ["collecttime"]
+
 class Day(models.Model):
     """
         manage the Day class
@@ -90,6 +177,23 @@ class Day(models.Model):
     time = models.ManyToManyField(
         Time
     )
+
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.nameday}"
+
+
+    class Meta:
+        """
+            #todo docstring
+        """
+
+        verbose_name = "Jour"
+        verbose_name_plural = "Jours"
+        ordering = ["nameday"]
 
 class CollectLocation(models.Model):
     """
@@ -115,6 +219,21 @@ class CollectLocation(models.Model):
         GarbageType
     )
 
+    def __str__(self):
+        """
+            #todo docstring
+        """
+
+        return f"{self.name}"
+
+
+    class Meta:
+        """
+        """
+
+        verbose_name = "Lieu de collecte"
+        verbose_name_plural = "Lieux de collecte"
+        ordering = ["name"]
 
 
 

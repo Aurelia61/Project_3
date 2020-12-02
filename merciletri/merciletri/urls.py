@@ -18,7 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),   #todo à modifier quand j'aurai créé ma view home ! qui m'ai rataché à aucune url pour l'instant !!!!
+    path('', include('home.urls')),   #todo à modifier quand j'aurai créé ma view home ! qui n'est rataché à aucune url pour l'instant !!!!
     path('blog/', include('blog.urls')),
     path('search/', include('search.urls')),
     path('private/', include('private.urls')),

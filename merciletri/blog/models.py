@@ -20,7 +20,7 @@ class Article(models.Model):
         default=""
     )
 
-    #todo ajouter : date, auteur, catégorie, image (une ou pl ?)
+    #todo ajouter : lien externe, date, auteur, catégorie, image (une ou pl ?)
 
     
     def __str__(self):

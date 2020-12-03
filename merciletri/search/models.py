@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.fields import Field
+
 
 class City(models.Model):
     """
@@ -8,6 +10,12 @@ class City(models.Model):
     name = models.CharField(
         "Nom de la ville",
         max_length = 100
+    )
+
+    image = models.ImageField(
+        "Image",
+        upload_to = "",
+        blank = True
     )
 
 
@@ -133,14 +141,14 @@ class Time(models.Model):
         blank = True
     )
 
-    openingtime = models.CharField(   #! charfield car on note l'heure en texte ?
-        "Heure d'ouverture",
+    wintertime = models.CharField(   #! charfield car on note l'heure en texte ?
+        "Heure d'hiver",
         max_length = 100,
         blank = True
     )
 
-    closingtime = models.CharField(   #! charfield car on note l'heure en texte ?
-        "Heure de fermeture",
+    summertime = models.CharField(   #! charfield car on note l'heure en texte ?
+        "Heure d'été'",
         max_length = 100,
         blank = True
     )
@@ -150,9 +158,14 @@ class Time(models.Model):
             #todo docstring
         """
 
-        #todo si collecttime vide afficher les autres champs
-
-        return f"{self.collecttime}"
+        if self.collecttime:
+            time = self.collecttime
+        elif self.wintertime:
+            time = self.wintertime + " (du 2 nomembre au 14 mars)"
+        else:
+            time = self.summertime + " (du 15 mars au 31 octobre)"
+        
+        return f"{time}"
 
 
     class Meta:
@@ -172,10 +185,6 @@ class Day(models.Model):
     nameday = models.CharField(
         "Jour",
         max_length = 50
-    )
-
-    time = models.ManyToManyField(
-        Time
     )
 
     def __str__(self):
@@ -213,6 +222,10 @@ class CollectLocation(models.Model):
 
     day = models.ManyToManyField(
         Day
+    )
+
+    time = models.ManyToManyField(
+        Time
     )
 
     type = models.ManyToManyField(

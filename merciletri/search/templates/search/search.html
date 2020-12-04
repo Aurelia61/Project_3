@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form action="{% url 'search:search_view' %}" method = "post">
+    <form action="{% url 'search:search_city' %}" method = "post">
         {% csrf_token %}
     <label for = "city_select">Sélectionnez une ville : </label>
     <select name="selected_city">
@@ -26,11 +26,11 @@
     </form>
 
 
-        <!-- {% if city_image %} -->
+        {% if city_image %}
             <!-- <p> Image ou lien Ville :{{ City.name }}</p> -->
             <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
-
-            <form action="{% url 'search:search_view' %}" method = "post">
+<p>city_id : {{city_id}}</p>
+            <form action="{% url 'search:search_zone' %}" method = "post">
                 {% csrf_token %}
             <label for = "zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
             <select name="selected_zone">
@@ -40,11 +40,12 @@
                 </select>
                 <input type="submit" value="Je valide !">
             </form>
-        <!-- {% endif %} -->
+        {% endif %}
 
 
-        <!-- {% if selected_zone %} -->
-            <form action="{% url 'search:search_view' %}" method = "post">
+        {% if selected_zone %}
+<p>zone_id : {{zone_id}}</p>
+            <form action="{% url 'search:search_garbage' zone_id %}" method = "post">
                 {% csrf_token %}
             <label for = "garbage_select">Sélectionnez un déchet : </label>
             <select name="selected_garbage">
@@ -54,12 +55,12 @@
                 </select>
                 <input type="submit" value="Je valide !">
             </form>
-        <!-- {% endif %} -->
+        {% endif %}
 
 
-        <!-- {% if selected_garbage %} -->
+        {% if selected_garbage %}
         <p>déchet sélectionné</p>
-        <p>Déchet : {{collectlocation}}</p>
+        <p>Déchet : {{collect}}</p>
         <!-- <form action="{% url 'search:search_view' %}" method = "post">
             {% csrf_token %}
         <label for = "garbage_select">Sélectionnez un déchet : </label>
@@ -70,7 +71,7 @@
             </select>
             <input type="submit" value="Je valide !"> -->
         <!-- </form> -->
-    <!-- {% endif %} -->
+    {% endif %}
 
 
 

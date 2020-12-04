@@ -5,9 +5,9 @@ app_name = 'search'
 
 urlpatterns = [
     # the 'name' value as called by the {% url %} template tag
-    #todo change
-    path('', views.search_view, name = 'search_view'),
-    #todo path('article/<int:pk>/', views.DetailArticle.as_view(), name = 'article'),
+    path('', views.search_city, name = 'search_city'),
+    path('<int:city_id>', views.search_zone, name = 'search_zone'),
+    path('<int:pk>/', views.search_garbage, name = 'search_garbage'),
 ]
 
 

@@ -34,8 +34,6 @@ class BlogIndex(generic.ListView):
         return articles_list_index
 
 
-
-
 class DetailArticle(generic.DetailView):
     """
         manage the article page thanks to django generic detail view

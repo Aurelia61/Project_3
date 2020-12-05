@@ -11,7 +11,9 @@ def search_city(request, city_id=None, zone_id=None):
     zones = None
     garbages = None
     type_id = None
-    collectlocation_garbage = None
+    selected_garbage = None
+    garbage_locations = []
+    garbage_loc_day_time = {}
     
     if request.method == "POST":
 
@@ -47,6 +49,7 @@ def search_city(request, city_id=None, zone_id=None):
             print(f"tous les déchets de la ville : {garbages}")
 
         else:
+
             garbages = Garbage.objects.all()
             print(f"tous les déchets de la ville : {garbages}")
             
@@ -54,6 +57,7 @@ def search_city(request, city_id=None, zone_id=None):
             print (f"déchet : {selected_garbage}")
 
             type_id = None
+            #todo faire des compréhensions de liste
             for garbage in garbages :
                 if selected_garbage == garbage.name :
                     type_id = garbage.garbagetype_id
@@ -63,28 +67,51 @@ def search_city(request, city_id=None, zone_id=None):
 
             collectlocation = CollectLocation.objects.filter(zone=zone_id)
 
+            day_id = None
             for CurrentLoc in collectlocation:
+                # print(f"collectlocation:  {collectlocation}")
                 try:
+                    # print(f"current loc : {CurrentLoc}")
                     GarbageLoc = CurrentLoc.type.get(id=type_id)
-                    collectlocation_garbage = CurrentLoc.name
+                    # print(f"GarbageLoc : {GarbageLoc}")
+                    try:
+                        day_loc = CurrentLoc.day.get()
+                        time_loc = CurrentLoc.time.get()
+                        # print(f"jour de col : {day_loc}")
+                        garbage_locations.append(f"Pour ce déchet, la collecte se fait {CurrentLoc.name} le {day_loc} {time_loc}")
+                        # print(f"current loc name : {CurrentLoc.name}")
+                        # print(f"loc id : {CurrentLoc.id}")
+                        # print(f" garbage locationS : {garbage_locations}")
+
+                    # garbage_loc_day_time["name"] = CurrentLoc.name
+                    # garbage_loc_day_time["when"]["day"] = CurrentLoc.day
+                    # garbage_loc_day_time["when"]["time"] = CurrentLoc.time
+                    except:
+                        # print("NON 1")
+                        #todo faire un code spécifiques pour les horaires des décheteries
+                        pass
                 except:
+                    # print("NON 2")
+                    #todo faire un message si pas de réponse 
                     pass
 
             # collectlocation = "ICI"
-            print(f"lieu de collecte pour ce déchet : {collectlocation_garbage}")
-
+            # print(f"lieu de collecte pour ce déchet : {garbage_locations}")
+            
 
     return render(
         request, 
         'search/search.html', 
         {
-            "cities":cities, 
+            "cities": cities, 
             "city_image": city_image, 
             "city_id": city_id,
-            "zones":zones, 
+            "zones": zones, 
             "zone_id": zone_id,
-            "garbages":garbages, 
-            "collectlocation": collectlocation_garbage
+            "garbages": garbages, 
+            "selected_garbage": selected_garbage,
+            "garbage_locations": garbage_locations,
+            # "garbage_loc_day_time": garbage_loc_day_time
         })
 
 
@@ -112,29 +139,29 @@ def search_city(request, city_id=None, zone_id=None):
 
 
 
-def search_garbage(request, city_id, zone_id):
-    """
-        get the garbage type
-    """
+# def search_garbage(request, city_id, zone_id):
+#     """
+#         get the garbage type
+#     """
 
-    type_id = None
+#     type_id = None
 
-    garbages = Garbage.objects.all()
+#     garbages = Garbage.objects.all()
 
-    # garbagetypes = GarbageType.object.all()
+#     # garbagetypes = GarbageType.object.all()
 
-    selected_garbage = request.POST.get("selected_garbage", None)
-    print (f"déchet : {selected_garbage}")
+#     selected_garbage = request.POST.get("selected_garbage", None)
+#     print (f"déchet : {selected_garbage}")
 
-    for garbage in garbages :
-        if selected_garbage == garbage.name :
-            type_id = garbage.garbagetype_id
-            print(f"Type : {type_id}")
+#     for garbage in garbages :
+#         if selected_garbage == garbage.name :
+#             type_id = garbage.garbagetype_id
+#             print(f"Type : {type_id}")
 
-    # type = GarbageType.objects.filter(name = selected_garbage)
-    # print(f"type : {type}")
+#     # type = GarbageType.objects.filter(name = selected_garbage)
+#     # print(f"type : {type}")
 
-    collectlocation = CollectLocation.objects.filter(zone=zone_id, type=type_id)
-    print(f"lieu de collecte : {collectlocation}")
+#     collectlocation = CollectLocation.objects.filter(zone=zone_id, type=type_id)
+#     print(f"lieu de collecte : {collectlocation}")
 
-    return render(request, 'search/search.html', {"garbages":garbages,"selected_garbage":selected_garbage, "type_id": type_id, "collectlocation":collectlocation})
+#     return render(request, 'search/search.html', {"garbages":garbages,"selected_garbage":selected_garbage, "type_id": type_id, "collectlocation":collectlocation})

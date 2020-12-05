@@ -7,18 +7,21 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!--fontawesome-->
+    <!--fontawesome (icon)-->
 	<script src="https://kit.fontawesome.com/4fa30db326.js" crossorigin="anonymous"></script>
     <!--google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <!--css file-->
-    <link rel="stylesheet" href="./css/home.css">
-    <title>Merci le Tri</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+    <title>{%block title %}Merci le Tri{% endblock %}</title>
 </head>
 
 <body>
     <div class="container">
+
+
         <!--nav menu-->
 		<div class="row" id="nav">
 			<div class="col-12">
@@ -31,7 +34,7 @@
 					<div class="topnav collapse navbar-collapse" id="myTopnav">
 						<div class="navbar-nav">
 							<a class="navbar-brand" href="#">
-								<img class="logo align-center" src="./img/logo.png"
+								<img class="logo align-center" src="{% static 'home/images/logo.png' %}"
 									alt="">
 							</a>
 							<a class="navbar-item nav-link" href="#">Page Personnelle</a>
@@ -46,6 +49,8 @@
 				</nav>
 			</div>
         </div>
+
+
         <!--title-->
         <div class="row" id="title">
             <div class="col-12">

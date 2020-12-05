@@ -14,25 +14,95 @@
 </head>
 
 <body>
-    <form action="{% url 'search:search_view'  %}" method="post">            
-        {% csrf_token %}
-
-        <div>
-            {% for city in Cities %}
-                <input type="radio" 
-                    name="City" 
-                    id="City{{ forloop.counter }}"
-                    value="{{ City.id }}">
-                <label for="City{{ forloop.counter }}">
-                    {{ City.name }}
-                </label>
+    <!-- {% if not city_id %} -->
+        <form action="{% url 'search:search_city' %}" method = "post">
+            {% csrf_token %}
+        <label for = "city_select">Sélectionnez une ville : </label>
+        <select name="selected_city">
+            {% for city in cities %}
+            <option value = {{city.name}} > {{city.name}} </option>
             {% endfor %}
-        </div>
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
 
-        <input type="submit" value="Je donne ma réponse">
 
-    </form>
+    <!-- {% elif not zone_id %} -->
+        <!-- <p> Image ou lien Ville :{{ City.name }}</p> -->
+        <p>Ville sélectionnée : {{city_id}}</p>
+        <form action="{% url 'search:search_city' city_id %}" method = "post">
+            {% csrf_token %}
+        <label for = "zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
+        <select name="selected_zone">
+            {% for zone in zones %}
+            <option value = {{zone.name}} > {{zone.name}} </option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
+        <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
 
+
+
+    <!-- {% elif not garbage_locations %} -->
+        <p>Ville sélectionnée : {{city_id}}</p>
+        <p>Zone sélectionnée : {{zone_id}}</p>
+        <form action="{% url 'search:search_city' city_id zone_id %}" method = "post">
+            {% csrf_token %}
+        <label for = "garbage_select">Sélectionnez un déchet : </label>
+        <select name="selected_garbage">
+            {% for garbage in garbages %}
+            <option value = {{garbage.name}} > {{garbage.name}} </option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
+
+    <!-- {% else %} -->
+        <p>Ville sélectionnée : {{city_id}}</p>
+        <p>Zone sélectionnée : {{zone_id}}</p>
+
+        <p>Déchet sélectionné : {{ selected_garbage }} </p>
+
+        {% for location in garbage_locations %}
+        <ul>
+            <li>  {{ location }} </li>
+        </ul>
+        <!-- <ul>
+            <li>  garbage_loc_day_time["name"]  </li>
+            <li>  garbage_loc_day_time["name"]["day"]  </li>
+            <li>  garbage_loc_day_time["name"]["time"]  </li>
+        </ul> -->
+        {% endfor %}
+    <!-- {% endif %} -->
+
+
+
+
+<br><br><br><br><br><br>
+<p> - - - - - - - - - - - - - - - - TESTS - - - - - - - - - - - - - - - -</p>
+<p>Toutes les villes enregistrées : </p>
+
+    {% if zones %}
+    <ul>
+        {% for zone in zones %}
+        <li>
+            <h3> {{zone.name}} </h3>
+        {% endfor %}
+        </li>
+    </ul>
+    {% endif %}
+
+    <p>Toutes les villes enregistrées : </p>
+    {% if cities %}
+    <ul>
+        {% for city in cities %}
+        <li>
+            <h3> {{city.name}} </h3>
+        {% endfor %}
+        </li>
+    </ul>
+    {% endif %}
 
 </body>
 

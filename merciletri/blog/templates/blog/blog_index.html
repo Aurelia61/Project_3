@@ -1,23 +1,12 @@
-{% load static %}
+{% extends "./blog_layout.html" %}
 
-<!DOCTYPE html>
+{%block navigator_title %}Merci le Tri - Articles{% endblock navigator_title %}
 
-<head>
-    <title>{%block title %}{% endblock %}</title>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-    {%block styles %}{% endblock %}
-</head>
-
-<body>
-
-    <!-- <h1>Index du blog</h1> -->
-    <br>
-    <h2>Voici les derniers articles</h2>
-    <br>
+{% block page_title %} Voici les derniers articles{% endblock page_title %} -->
 
 
-    {%block body %}
+
+{% block article_content %} 
 
     {% if latest_articles %}
     <ul>
@@ -30,10 +19,9 @@
     </ul>
     {% endif %}
 
-    {% endblock %}
-</body>
+{% endblock %}
 
-</html>
+
 
 
 <!--* quand ce n'était pas des vues génériques -->

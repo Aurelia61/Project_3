@@ -1,6 +1,6 @@
-<h1> {{article.title}}</h1>
+{% extends "./blog_layout.html" %}
 
-<p>{{article.pickup_line}}</p>
+{% block page_title %} {{article.title}} {% endblock %}
 
-<p>{{article.body}}</p>
+{% block article_content %} {{article.body}} {% endblock %}
 

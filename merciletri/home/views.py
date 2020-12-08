@@ -5,4 +5,4 @@ def home(request):
         #todo docstring
     """
 
-    return render (request, 'home/main_layout.html')
+    return render (request, 'home/home.html')

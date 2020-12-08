@@ -15,198 +15,94 @@
     <!--css file-->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
-    <title>{%block title %}Merci le Tri{% endblock %}</title>
+    <title>{%block navigator_title %}Merci le Tri{% endblock navigator_title %}</title>
 </head>
 
 <body>
     <div class="container">
 
+        <header>
+            <!--nav menu-->
+            <div class="row" id="nav">
+                <div class="col-12">
+                    <nav class="nav navbar navbar-expand-lg navbar-toggleable-md">
+                        <!--button-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myTopnav"
+                            aria-controls="myTopnav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon"><i class="fas fa-bars"></i></span>
+                        </button>
+                        <div class="topnav collapse navbar-collapse" id="myTopnav">
+                            <div class="navbar-nav">
+                                <a class="navbar-brand" href="#">
+                                    <img class="logo align-center" src="{% static 'home/images/logo.png' %}"
+                                        alt="">
+                                </a>
+                                <a class="navbar-item nav-link" href="#">Page Personnelle</a>
+                                <a class="navbar-item nav-link" href="#">Jeu</a>
+                                <a class="navbar-item nav-link" href="#">Articles</a>
+                                <a class="navbar-item nav-link" href="#">A propos</a>
+                                <form class="navbar-form navbar-item nav-link">
+                                    <input type="text" class="input-smform-control2 search" placeholder="Recherche">
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-        <!--nav menu-->
-		<div class="row" id="nav">
-			<div class="col-12">
-				<nav class="nav navbar navbar-expand-lg navbar-toggleable-md">
-					<!--button-->
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myTopnav"
-						aria-controls="myTopnav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon"><i class="fas fa-bars"></i></span>
-					</button>
-					<div class="topnav collapse navbar-collapse" id="myTopnav">
-						<div class="navbar-nav">
-							<a class="navbar-brand" href="#">
-								<img class="logo align-center" src="{% static 'home/images/logo.png' %}"
-									alt="">
-							</a>
-							<a class="navbar-item nav-link" href="#">Page Personnelle</a>
-							<a class="navbar-item nav-link" href="#">Jeu</a>
-                            <a class="navbar-item nav-link" href="#">Articles</a>
-                            <a class="navbar-item nav-link" href="#">A propos</a>
-							<form class="navbar-form navbar-item nav-link">
-								<input type="text" class="input-smform-control2 search" placeholder="Recherche">
-							</form>
-						</div>
-					</div>
-				</nav>
-			</div>
-        </div>
+        <main>
 
+            <section id = "article">
+                <!--title-->
+                <div class="row" id="title">
+                    <div class="col-12">
+                        <h1 class="title"> {% block page_title %} Bienvenue sur le site Merci le Tri {% endblock page_title %}</h1>
+                    </div>
+                </div>
+                <!--content-->
+                {% block article_content %} 
+                {% endblock %}
+            </section>
 
-        <!--title-->
-        <div class="row" id="title">
-            <div class="col-12">
-                <h1 class="title">L'histoire des déchets</h1>
-            </div>
-        </div>
-        <!--content-->
-        <div class="row content">
-            <div class="col-lg-7 col-sm-12">
-                <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
-                </p>
-            </div>
-            <div class="col-lg-5 col-sm-12">
-                <div class="content-img" style="text-align: right;">
-                    <img src="./img/arbre.jpg" alt="" class="content-img-item">
-                </div>
-            </div>
-        </div>
-        <div class="row content reverse">
-            <div class="col-lg-5 col-sm-12">
-                <div class="content-img" style="text-align: left;">
-                    <img src="./img/chemin_foret.jpg" alt="" class="content-img-item">
-                </div>
-            </div>
-            <div class="col-lg-7 col-sm-12">
-                <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
-                </p>
-            </div>
-        </div>
-        <div class="row content">
-            <div class="col-lg-7 col-sm-12">
-                <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
-                </p>
-            </div>
-            <div class="col-lg-5 col-sm-12">
-                <div class="content-img" style="text-align: right;">
-                    <img src="./img/frog.jpg" alt="" class="content-img-item">
-                </div>
-            </div>
-        </div>
-        <div class="row content reverse" style="margin-bottom: 2rem;">
-            <div class="col-lg-5 col-sm-12">
-                <div class="content-img" style="text-align: left;">
-                    <img src="./img/poubelle_verte.jpg" alt="" class="content-img-item">
-                </div>
-            </div>
-            <div class="col-lg-7 col-sm-12">
-                <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
-                </p>
-            </div>
-        </div>
-        <hr>
-        <!--other pages-->
-        <div class="row">
-            <div class="col-12">
-                <h2>D'autres pages...</h2>
-            </div>
-        </div>
-        <!--cards-->
-        <div class="row" id="card">
-            <!--card#1-->
-            <div class="col-lg-4 col-sm-12">
-                <div class="card-container">
-                    <div class="card-img">
-                        <img class="card-img-item" src="./img/chemin_foret.jpg">
-                        <div class="card-img-icon">
-                            <span class="card-img-icon-text">recycler</span>
+            <section  id = "cards">
+                {% block cards %}
+                {% endblock %}
+            </section>
+
+            <section id = "search">
+                {% block search %}
+                {% endblock %}
+            </section>
+
+        </main>
+
+        <footer>
+            <div class="row" id="footer">
+                <div class="col-12">
+                    <div class="footer">
+                        <div class="footer-logo">
+                            <a href="#" class="footer-link"><img src="{% static 'home/images/logo.png' %}" alt="logo" class="footer-logo-item"></a>
+                        </div>
+                        <a href="#" class="footer-link">Contact</a>
+                        <a href="#" class="footer-link">Politique de cookies</a>
+                        <a href="#" class="footer-link">Plan du site</a>
+                        <a href="#" class="footer-link">Condition d'utilisation</a>
+                        <a href="#" class="footer-link">Politique de confidentialité</a>
+                        <div class="footer-icons">
+                            <a href="#" class="footer-link footer-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="footer-link footer-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="footer-link footer-icon"><i class="fab fa-facebook-square"></i></a>
                         </div>
                     </div>
-                    <div class="card-infos">
-                        <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
-                        <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
+                    <div class="copyright">
+                        <p>© Copyright 2020</p>
                     </div>
                 </div>
             </div>
-            <!--card#2-->
-            <div class="col-lg-4 col-sm-12">
-                <div class="card-container">
-                    <div class="card-img">
-                        <img class="card-img-item" src="./img/frog.jpg">
-                        <div class="card-img-icon">
-                            <span class="card-img-icon-text">donner</span>
-                        </div>
-                    </div>
-                    <div class="card-infos">
-                        <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
-                        <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!--card#3-->
-            <div class="col-lg-4 col-sm-12">
-                <div class="card-container">
-                    <div class="card-img">
-                        <img class="card-img-item" src="./img/poubelle_verte.jpg">
-                        <div class="card-img-icon">
-                            <span class="card-img-icon-text">composter</span>
-                        </div>
-                    </div>
-                    <div class="card-infos">
-                        <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
-                        <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--form-->
-        <div class="row" id="form">
-            <div class="col-12">
-                <form>
-                <fieldset>
-                    <div class="input-style">
-                        <label>Où es-tu?</label>
-                        <input type="text" placeholder="adresse, lieu, code postal...">
-                    </div>
-                    <div class="input-style">
-                        <label>Quel est ton objet à jeter?</label>
-                        <input type="text" placeholder="nom, matière etc..">
-                    </div>
-                </fieldset>
-                <div>
-                    <button type="submit">rechercher</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        <!--footer-->
-        <div class="row" id="footer">
-            <div class="col-12">
-                <div class="footer">
-                    <div class="footer-logo">
-                        <a href="#" class="footer-link"><img src="./img/logo.png" alt="logo" class="footer-logo-item"></a>
-                    </div>
-                    <a href="#" class="footer-link">Contact</a>
-                    <a href="#" class="footer-link">Politique de cookies</a>
-                    <a href="#" class="footer-link">Plan du site</a>
-                    <a href="#" class="footer-link">Condition d'utilisation</a>
-                    <a href="#" class="footer-link">Politique de confidentialité</a>
-                    <div class="footer-icons">
-                        <a href="#" class="footer-link footer-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-link footer-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="footer-link footer-icon"><i class="fab fa-facebook-square"></i></a>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p>© Copyright 2020</p>
-                </div>
-            </div>
-        </div>
-       
+        </footer>
+
     </div>
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
 		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

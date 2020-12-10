@@ -33,17 +33,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
+    'blog.apps.BlogConfig',
+    'search.apps.SearchConfig',
+    'private.apps.PrivateConfig',
+    'game.apps.GameConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'search.apps.SearchConfig',
-    'home.apps.HomeConfig',
-    'private.apps.PrivateConfig',
-    'game.apps.GameConfig'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'merciletri.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +82,13 @@ WSGI_APPLICATION = 'merciletri.wsgi.application'
 
 DATABASES = {
     'default': {
+        # local database
+            # 'ENGINE': 'django.db.backends.postgresql',
+            # 'USER': 'postgres',
+            # 'PASSWORD': 'Formation2020-at',
+            # 'HOST': 'localhost',
+            # 'PORT': "15006"
+        # remote database
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'merciletri',
         'USER': 'postgres',
@@ -89,8 +96,8 @@ DATABASES = {
         'HOST': 'ale-pyt-2006-pjt-p3-merciletri-db.pythonrover.wilders.dev',
         'PORT': "15006"
     }
-}
 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

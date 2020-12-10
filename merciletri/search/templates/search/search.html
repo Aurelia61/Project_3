@@ -1,19 +1,13 @@
-<h1>Recherche en cours...</h1>
+{% extends "home/main_layout.html" %}
 
-<!DOCTYPE html>
-<html lang="fr">
+{%block navigator_title %}
+Merci le Tri - Recherche
+{% endblock navigator_title %}
 
-<head>
-
-    <meta charset="utf-8">
-    <title>Recherche</title>
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'search/search.css' %}">
-
-</head>
-
-<body>
+{% block page_title %} 
+Où va ce déchet ?
+{% endblock page_title %}
+{% block article_content %}
     <!-- {% if not city_id %} -->
         <form action="{% url 'search:search_city' %}" method = "post">
             {% csrf_token %}
@@ -29,8 +23,8 @@
 
     <!-- {% elif not zone_id %} -->
         <!-- <p> Image ou lien Ville :{{ City.name }}</p> -->
-        <p>Ville sélectionnée : {{city_id}}</p>
-        <form action="{% url 'search:search_city' city_id %}" method = "post">
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <form action="{% url 'search:search_city' city_id city_name %}" method = "post">
             {% csrf_token %}
         <label for = "zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
         <select name="selected_zone">
@@ -45,9 +39,9 @@
 
 
     <!-- {% elif not garbage_locations %} -->
-        <p>Ville sélectionnée : {{city_id}}</p>
-        <p>Zone sélectionnée : {{zone_id}}</p>
-        <form action="{% url 'search:search_city' city_id zone_id %}" method = "post">
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <p>Zone sélectionnée : {{zone_name}}</p>
+        <form action="{% url 'search:search_city' city_id city_name zone_id zone_name %}" method = "post">
             {% csrf_token %}
         <label for = "garbage_select">Sélectionnez un déchet : </label>
         <select name="selected_garbage">
@@ -59,10 +53,10 @@
         </form>
 
     <!-- {% else %} -->
-        <p>Ville sélectionnée : {{city_id}}</p>
-        <p>Zone sélectionnée : {{zone_id}}</p>
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <p>Zone sélectionnée : {{zone_name}}</p>
 
-        <p>Déchet sélectionné : {{ selected_garbage }} </p>
+        <p>Déchet sélectionné : {{garbage_name }} </p>
 
         {% for location in garbage_locations %}
         <ul>
@@ -76,34 +70,7 @@
         {% endfor %}
     <!-- {% endif %} -->
 
-
-
-
-<br><br><br><br><br><br>
-<p> - - - - - - - - - - - - - - - - TESTS - - - - - - - - - - - - - - - -</p>
-<p>Toutes les villes enregistrées : </p>
-
-    {% if zones %}
-    <ul>
-        {% for zone in zones %}
-        <li>
-            <h3> {{zone.name}} </h3>
-        {% endfor %}
-        </li>
-    </ul>
-    {% endif %}
-
-    <p>Toutes les villes enregistrées : </p>
-    {% if cities %}
-    <ul>
-        {% for city in cities %}
-        <li>
-            <h3> {{city.name}} </h3>
-        {% endfor %}
-        </li>
-    </ul>
-    {% endif %}
-
+{% endblock %}
 </body>
 
 </html>

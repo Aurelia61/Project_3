@@ -1,18 +1,21 @@
 from django.shortcuts import render
 from .models import City, CollectLocation, Zone, Garbage, GarbageType
 
-def search_city(request, city_id=None, zone_id=None):
+def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=None, garbage_name=None):
     """
         get the city
     """
 
     city_image = ""
     cities = City.objects.all()
+    city_name = city_name
     zones = None
+    zone_name = zone_name
     garbages = None
     type_id = None
     selected_garbage = None
     garbage_locations = []
+    garbage_name = garbage_name
     garbage_loc_day_time = {}
     
     if request.method == "POST":
@@ -25,6 +28,7 @@ def search_city(request, city_id=None, zone_id=None):
                 if selected_city == city.name :
                     city_image = city.image.url
                     city_id = city.id
+                    city_name = city.name
                     break;
                     print(f"city_id : {city_id}")
 
@@ -42,6 +46,7 @@ def search_city(request, city_id=None, zone_id=None):
                 # if zone.city_id == city_id:
                 if selected_zone == zone.name :
                     zone_id = zone.id
+                    zone_name = zone.name
                     break;
                     print(f"Zone : {zone_id}")
 
@@ -61,6 +66,7 @@ def search_city(request, city_id=None, zone_id=None):
             for garbage in garbages :
                 if selected_garbage == garbage.name :
                     type_id = garbage.garbagetype_id
+                    garbage_name = garbage.name
                     break;
                     print(f"Type : {type_id}")
 
@@ -106,11 +112,14 @@ def search_city(request, city_id=None, zone_id=None):
             "cities": cities, 
             "city_image": city_image, 
             "city_id": city_id,
+            "city_name": city_name,
             "zones": zones, 
             "zone_id": zone_id,
+            "zone_name": zone_name,
             "garbages": garbages, 
             "selected_garbage": selected_garbage,
             "garbage_locations": garbage_locations,
+            "garbage_name" : garbage_name,
             # "garbage_loc_day_time": garbage_loc_day_time
         })
 

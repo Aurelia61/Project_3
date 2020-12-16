@@ -5,6 +5,7 @@ app_name = 'game'
 
 urlpatterns = [
     # the 'name' value as called by the {% url %} template tag
+    # name = 'game'
     #todo change
     #todo path('', views.BlogIndex.as_view(), name = 'blog_index'),
     #todo path('article/<int:pk>/', views.DetailArticle.as_view(), name = 'article'),

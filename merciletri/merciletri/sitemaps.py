@@ -6,7 +6,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
     changefreq = 'daily'
 
     def items(self):
-        return ['home.urls', 'blog', 'search']
+        return ['home', 'blog', 'search']
 #todo ajouter url 'private' et 'game' (et 'article' ?)
 #! 'blog/views.blog' à modifier view function or pattern name
     

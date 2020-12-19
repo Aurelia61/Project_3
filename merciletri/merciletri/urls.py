@@ -32,7 +32,7 @@ urlpatterns = [
     path('search/', include('search.urls'), name = 'search'),
     path('private/', include('private.urls'), name = 'private'),
     path('game/', include('game.urls'), name = 'game'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 # serve static media files in dev

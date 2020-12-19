@@ -17,14 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap
+# from . import views
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),                   #todo à modifier quand j'aurai créé ma view home ! qui n'est rataché à aucune url pour l'instant !!!!
-    path('blog/', include('blog.urls')),
-    path('search/', include('search.urls')),
-    path('private/', include('private.urls')),
-    path('game/', include('game.urls')),
+    path('', include('home.urls'), name = 'home'),                   #todo à modifier quand j'aurai créé ma view home ! qui n'est rataché à aucune url pour l'instant !!!!
+    path('blog/', include('blog.urls'), name = 'blog'),
+    path('search/', include('search.urls'), name = 'search'),
+    path('private/', include('private.urls'), name = 'private'),
+    path('game/', include('game.urls'), name = 'game'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 # serve static media files in dev

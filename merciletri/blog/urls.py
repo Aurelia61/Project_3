@@ -14,5 +14,3 @@ urlpatterns = [
 #todo le contenu s'affiche si l'url est trouvée 
 #todo mais parfois il manque le / (ou il est en trop)
 
-#* for not generic view
-# path('blog/', views.blog_index, name = 'blog_index'),

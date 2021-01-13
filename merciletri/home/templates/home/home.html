@@ -8,25 +8,41 @@
 
 {% block search_top %}
     <!--form-->
-    <div class="row" id="form">
-        <div class="col-12">
-            <form>
+
+    <div class="col-12"> 
+        <form>
             <fieldset>
                 <div class="input-style">
-                    <label>Où es-tu?</label>
-                    <input type="text" placeholder="adresse, lieu, code postal...">
-                </div>
-                <div class="input-style">
-                    <label>Quel est ton objet à jeter?</label>
-                    <input type="text" placeholder="nom, matière etc..">
+                    <label for = "city_select">Sélectionnez une ville : </label>
+                        <select name="selected_city">
+                            {% for city in cities %}
+                            <option value = {{city.name}} > {{city.name}} </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Je valide !">
                 </div>
             </fieldset>
-            <div>
-                <button type="submit">rechercher</button>
-            </div>
-            </form>
-        </div>
-    </div>
+        </form>
+
+    <!-- <div class="row" id="form"> -->
+        <!-- <div class="col-12"> -->
+            <!-- <form> -->
+            <!-- <fieldset> -->
+                <!-- <div class="input-style"> -->
+                    <!-- <label>Où es-tu?</label> -->
+                    <!-- <input type="text" placeholder="adresse, lieu, code postal..."> -->
+                <!-- </div> -->
+                <!-- <div class="input-style"> -->
+                    <!-- <label>Quel est ton objet à jeter?</label> -->
+                    <!-- <input type="text" placeholder="nom, matière etc.."> -->
+                <!-- </div> -->
+            <!-- </fieldset> -->
+            <!-- <div> -->
+                <!-- <button type="submit">rechercher</button> -->
+            <!-- </div> -->
+            <!-- </form> -->
+        <!-- </div> -->
+    <!-- </div> -->
 {% endblock %}
 
 

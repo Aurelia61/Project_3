@@ -11,11 +11,11 @@ Où va ce déchet ?
     <!-- {% if not city_id %} -->
         <form action="{% url 'search:search_city' %}" method = "post">
             {% csrf_token %}
-        <label for = "city_select">Sélectionnez une ville : </label>
-        <select name="selected_city">
-            {% for city in cities %}
-            <option value = {{city.name}} > {{city.name}} </option>
-            {% endfor %}
+            <label for = "city_select">Sélectionnez une ville : </label>
+            <select name="selected_city">
+                {% for city in cities %}
+                <option value = {{city.name}} > {{city.name}} </option>
+                {% endfor %}
             </select>
             <input type="submit" value="Je valide !">
         </form>
@@ -37,7 +37,6 @@ Où va ce déchet ?
         <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
 
 
-
     <!-- {% elif not garbage_locations %} -->
         <p>Ville sélectionnée : {{city_name}}</p>
         <p>Zone sélectionnée : {{zone_name}}</p>
@@ -52,6 +51,7 @@ Où va ce déchet ?
             <input type="submit" value="Je valide !">
         </form>
 
+        
     <!-- {% else %} -->
         <p>Ville sélectionnée : {{city_name}}</p>
         <p>Zone sélectionnée : {{zone_name}}</p>

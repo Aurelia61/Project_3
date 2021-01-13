@@ -6,15 +6,15 @@ from search.models import City, CollectLocation, Zone, Garbage, GarbageType
 ########################################################################
 
 # todo this code works ##################################################
-def home(request):
-    """
+# def home(request):
+#     """
         
-    """
+#     """
 
-    return render (request, 'home/home.html')
+#     return render (request, 'home/home.html')
 # todo ###########################################################
 
-def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=None, garbage_name=None):
+def home(request, city_id=None, zone_id=None, city_name=None, zone_name=None, garbage_name=None):
     """
         get the city
     """
@@ -120,7 +120,7 @@ def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=N
 
     return render(
         request, 
-        'search/search.html', 
+        'home/home.html', 
         {
             "cities": cities, 
             "city_image": city_image, 

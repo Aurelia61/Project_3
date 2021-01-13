@@ -7,46 +7,87 @@
 {% block page_title %} La première app qui t'aide à trier tes déchets dans la bonne poubelle {% endblock page_title %}
 
 {% block search_top %}
-    <!--form-->
+<p> COUCOU</p>
 
-    <div class="col-12"> 
-        <form>
-            <fieldset>
-                <div class="input-style">
-                    <label for = "city_select">Sélectionnez une ville : </label>
-                        <select name="selected_city">
-                            {% for city in cities %}
-                            <option value = {{city.name}} > {{city.name}} </option>
-                            {% endfor %}
-                        </select>
-                        <input type="submit" value="Je valide !">
-                </div>
-            </fieldset>
-        </form>
+<!--form-->
+
+<div class="col-12">
+    <form action="{{ 'home:home' }}" method="post">
+        {% csrf_token %}
+        <label for="city_select">Sélectionnez une ville : </label>
+        <select name="selected_city">
+            {% for city in cities %}
+            <option value={{city.name}}> {{city.name}} </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Je valide !">
+    </form>
+
+
+<p>Ville sélectionnée : {{city_name}}</p>
+<form action="{{ 'home:home city_id city_name' }}" method="post">
+    {% csrf_token %}
+    <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
+    <select name="selected_zone">
+        {% for zone in zones %}
+        <option value={{zone.name}}> {{zone.name}} </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Je valide !">
+</form>
+<img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
+
+
+<p>Ville sélectionnée : {{city_name}}</p>
+<p>Zone sélectionnée : {{zone_name}}</p>
+<form action="{{ 'home:home city_id city_name zone_id zone_name' }}" method="post">
+    {% csrf_token %}
+    <label for="garbage_select">Sélectionnez un déchet : </label>
+    <select name="selected_garbage">
+        {% for garbage in garbages %}
+        <option value={{garbage.name}}> {{garbage.name}} </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Je valide !">
+</form>
+
+
+<p>Ville sélectionnée : {{city_name}}</p>
+<p>Zone sélectionnée : {{zone_name}}</p>
+
+<p>Déchet sélectionné : {{garbage_name }} </p>
+
+{% for location in garbage_locations %}
+<ul>
+    <li> {{ location }} </li>
+</ul>
+{% endfor %}
+
+
 
     <!-- <div class="row" id="form"> -->
-        <!-- <div class="col-12"> -->
-            <!-- <form> -->
-            <!-- <fieldset> -->
-                <!-- <div class="input-style"> -->
-                    <!-- <label>Où es-tu?</label> -->
-                    <!-- <input type="text" placeholder="adresse, lieu, code postal..."> -->
-                <!-- </div> -->
-                <!-- <div class="input-style"> -->
-                    <!-- <label>Quel est ton objet à jeter?</label> -->
-                    <!-- <input type="text" placeholder="nom, matière etc.."> -->
-                <!-- </div> -->
-            <!-- </fieldset> -->
-            <!-- <div> -->
-                <!-- <button type="submit">rechercher</button> -->
-            <!-- </div> -->
-            <!-- </form> -->
-        <!-- </div> -->
+    <!-- <div class="col-12"> -->
+    <!-- <form> -->
+    <!-- <fieldset> -->
+    <!-- <div class="input-style"> -->
+    <!-- <label>Où es-tu?</label> -->
+    <!-- <input type="text" placeholder="adresse, lieu, code postal..."> -->
     <!-- </div> -->
-{% endblock %}
+    <!-- <div class="input-style"> -->
+    <!-- <label>Quel est ton objet à jeter?</label> -->
+    <!-- <input type="text" placeholder="nom, matière etc.."> -->
+    <!-- </div> -->
+    <!-- </fieldset> -->
+    <!-- <div> -->
+    <!-- <button type="submit">rechercher</button> -->
+    <!-- </div> -->
+    <!-- </form> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    {% endblock %}
 
 
-{% block cards %}
+    {% block cards %}
     <hr>
     <!--other pages-->
     <div class="row">
@@ -67,7 +108,8 @@
                 </div>
                 <div class="card-infos">
                     <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
-                    <a class="card-infos-button" href="/blog/article/6">Read more  <i class="fas fa-arrow-right arrow"></i></a>
+                    <a class="card-infos-button" href="/blog/article/6">Read more <i
+                            class="fas fa-arrow-right arrow"></i></a>
                 </div>
             </div>
         </div>
@@ -82,7 +124,8 @@
                 </div>
                 <div class="card-infos">
                     <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
-                    <a class="card-infos-button" href="/blog/article/7">Read more  <i class="fas fa-arrow-right arrow"></i></a>
+                    <a class="card-infos-button" href="/blog/article/7">Read more <i
+                            class="fas fa-arrow-right arrow"></i></a>
                 </div>
             </div>
         </div>
@@ -97,11 +140,10 @@
                 </div>
                 <div class="card-infos">
                     <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
-                    <a class="card-infos-button" href="/blog/article/8">Read more  <i class="fas fa-arrow-right arrow"></i></a>
+                    <a class="card-infos-button" href="/blog/article/8">Read more <i
+                            class="fas fa-arrow-right arrow"></i></a>
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
-
-
+    {% endblock %}

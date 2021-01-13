@@ -1,8 +1,10 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 class Article(models.Model):
     """
-
+        
     """
 
     title = models.CharField(
@@ -10,18 +12,17 @@ class Article(models.Model):
         max_length = 80
         )
 
-    body = models.TextField(
-        "contenu"
-    )
-    
+    # body = models.TextField(
+    #     "contenu"
+    # )
+
+    body = RichTextField(blank=True, null=True)
+
     pickup_line = models.CharField(
         "phrase d'accroche",
         max_length = 150,
         default=""
     )
-
-    #todo ajouter : lien externe, date, auteur, catégorie, image (une ou pl ?)
-
     
     def __str__(self):
         """

@@ -5,8 +5,17 @@
 
 {% block article_content %}     <div class="row content">
     <div class="col-lg-7 col-sm-12">
-        <p class="content-text">{{article.body}} 
-        </p>
+        {% with current_text_selection="" %}
+            {% for caracter in article.body %}
+                {% if caracter != "." %}
+                    {% current_text_selection+caracter %}
+                {% else %}
+                    {% current_text_selection.append(caracter) %}
+                    <p class="content-text">{{current_text_selection|linebreaksbr}} 
+                    </p>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
     </div>
     <div class="col-lg-5 col-sm-12">
         <div class="content-img" style="text-align: right;">

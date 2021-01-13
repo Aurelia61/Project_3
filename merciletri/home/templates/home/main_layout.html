@@ -38,10 +38,11 @@
                                     <img class="logo align-center" src="{% static 'home/images/logo.png' %}"
                                         alt="">
                                 </a>
-                                <a class="navbar-item nav-link" href="private/">Page Personnelle</a>
+                                <a class="navbar-item nav-link" href="{% url 'merciletri:private/'}">Page Personnelle</a>
                                 <a class="navbar-item nav-link" href="game/">Jeu</a>
                                 <a class="navbar-item nav-link" href="blog/">Articles</a>
-                                <a class="navbar-item nav-link" href="#">A propos</a>
+                                <!-- todo create a page "a propos" -->
+                                <!-- <a class="navbar-item nav-link" href="#">A propos</a> -->
                                 <form class="navbar-form navbar-item nav-link">
                                     <input type="text" class="input-smform-control2 search" placeholder="Recherche">
                                 </form>

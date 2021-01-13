@@ -8,7 +8,7 @@ from search.models import City, CollectLocation, Zone, Garbage, GarbageType
 # todo this code works ##################################################
 def home(request):
     """
-        #todo docstring
+        
     """
 
     return render (request, 'home/home.html')

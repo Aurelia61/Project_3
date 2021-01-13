@@ -3,9 +3,11 @@
 
 {% block page_title %} {{article.title}} {% endblock %}
 
-{% block article_content %}     <div class="row content">
+{% block article_content %} <div class="row content">
     <div class="col-lg-7 col-sm-12">
-        <p class="content-text">{{article.body}} 
+        <p class="content-text">
+            {{article.media}}
+            {{article.body|safe}}
         </p>
     </div>
     <div class="col-lg-5 col-sm-12">
@@ -21,15 +23,19 @@
         </div>
     </div>
     <div class="col-lg-7 col-sm-12">
-        <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
+        <p class="content-text">A MODIFIER
         </p>
     </div>
 </div>
 <div class="row content">
     <div class="col-lg-7 col-sm-12">
-        <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
+        <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae
+            itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam
+            laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque
+            quas fugiat animi quo voluptatem ipsa totam laboriosam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem
+            facere doloribus!
         </p>
     </div>
     <div class="col-lg-5 col-sm-12">
@@ -45,77 +51,81 @@
         </div>
     </div>
     <div class="col-lg-7 col-sm-12">
-        <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam laboriosam.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem facere doloribus!
+        <p class="content-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae
+            itaque quas fugiat animi quo voluptatem ipsa totam laboriosam. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Unde, aliquid? Molestiae itaque quas fugiat animi quo voluptatem ipsa totam
+            laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, aliquid? Molestiae itaque
+            quas fugiat animi quo voluptatem ipsa totam laboriosam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit officiis repellat quidem
+            facere doloribus!
         </p>
     </div>
 </div>
-
 {% endblock %}
 
 {% block cards %}
-    <hr>
-    <!--other pages-->
-    <div class="row">
-        <div class="col-12">
-            <h2>D'autres pages...</h2>
-        </div>
+<hr>
+<!--other pages-->
+<div class="row">
+    <div class="col-12">
+        <h2>Des astuces pour mieux trier</h2>
     </div>
-    <!--cards-->
-    <div class="row" id="card">
-        <!--card#1-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/chemin_foret.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">recycler</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
-                    <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
+</div>
+<!--cards-->
+<div class="row" id="card">
+    <!--card#1-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/chemin_foret.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">recycler</span>
                 </div>
             </div>
-        </div>
-        <!--card#2-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/frog.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">donner</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
-                    <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
-                </div>
-            </div>
-        </div>
-        <!--card#3-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/poubelle_verte.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">composter</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
-                    <a class="card-infos-button" href="#">Read more  <i class="fas fa-arrow-right arrow"></i></a>
-                </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
+                <a class="card-infos-button" href="/blog/article/6">Read more <i class="fas fa-arrow-right arrow"></i></a>
             </div>
         </div>
     </div>
+    <!--card#2-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/frog.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">donner</span>
+                </div>
+            </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
+                <a class="card-infos-button" href="/blog/article/7">Read more <i class="fas fa-arrow-right arrow"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--card#3-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/poubelle_verte.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">composter</span>
+                </div>
+            </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
+                <a class="card-infos-button" href="/blog/article/8">Read more <i class="fas fa-arrow-right arrow"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block search %}
-    <!--form-->
-    <div class="row" id="form">
-        <div class="col-12">
-            <form>
+<!--form-->
+<div class="row" id="form">
+    <div class="col-12">
+        <form>
             <fieldset>
                 <div class="input-style">
                     <label>Où es-tu?</label>
@@ -129,7 +139,7 @@
             <div>
                 <button type="submit">rechercher</button>
             </div>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 {% endblock %}

@@ -21,7 +21,7 @@ class City(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.name}"
@@ -29,7 +29,7 @@ class City(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Ville"
@@ -55,7 +55,7 @@ class Zone(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.name}"
@@ -63,7 +63,7 @@ class Zone(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Zone"
@@ -82,7 +82,7 @@ class GarbageType(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.name}"
@@ -90,7 +90,7 @@ class GarbageType(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Type de déchet"
@@ -115,7 +115,7 @@ class Garbage(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.name}"
@@ -123,7 +123,7 @@ class Garbage(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Déchet"
@@ -155,7 +155,7 @@ class Time(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         if self.collecttime:
@@ -170,7 +170,7 @@ class Time(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Horaire"
@@ -189,7 +189,7 @@ class Day(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.nameday}"
@@ -197,7 +197,7 @@ class Day(models.Model):
 
     class Meta:
         """
-            #todo docstring
+            
         """
 
         verbose_name = "Jour"
@@ -234,7 +234,7 @@ class CollectLocation(models.Model):
 
     def __str__(self):
         """
-            #todo docstring
+            
         """
 
         return f"{self.name}"

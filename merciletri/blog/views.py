@@ -20,14 +20,11 @@ class BlogIndex(generic.ListView):
             get and return the last 3 articles registred in the databases
         """
 
-        #todo choisir le nombre d'articles à afficher sur la page d'index
-
-
         articles_list_index = (Article.objects
             #todo ranger par date et non par id
             .order_by("-id")
             # the 3 latest
-            [:3]
+            [:10]
         )
 
         # Return the list of the 3 lastest article

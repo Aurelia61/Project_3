@@ -7,70 +7,67 @@ Merci le Tri - Recherche
 {% block page_title %}
 Où va ce déchet ?
 {% endblock page_title %}
+
 {% block article_content %}
-{% if not city_id %}
-<form action="{% url 'search:search_city' %}" method="post">
-    {% csrf_token %}
-    <label for="city_select">Sélectionnez une ville : </label>
-    <select name="selected_city">
-        {% for city in cities %}
-        <option value={{city.name}}> {{city.name}} </option>
+<div class="row" id="form">
+    <div class="col-12">
+
+        {% if not city_id %}
+        <form action="{% url 'search:search_city' %}" method="post">
+            {% csrf_token %}
+            <label for="city_select">Sélectionnez une ville : </label>
+            <select name="selected_city">
+                {% for city in cities %}
+                <option value={{city.name}}> {{city.name}} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
+
+
+        {% elif not zone_id %}
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <form action="{% url 'search:search_city' city_id city_name %}" method="post">
+            {% csrf_token %}
+            <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
+            <select name="selected_zone">
+                {% for zone in zones %}
+                <option value={{zone.name}}> {{zone.name}} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
+        <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
+
+
+        {% elif not garbage_locations %}
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <p>Zone sélectionnée : {{zone_name}}</p>
+        <form action="{% url 'search:search_city' city_id city_name zone_id zone_name %}" method="post">
+            {% csrf_token %}
+            <label for="garbage_select">Sélectionnez un déchet : </label>
+            <select name="selected_garbage">
+                {% for garbage in garbages %}
+                <option value={{garbage.name}}> {{garbage.name}} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Je valide !">
+        </form>
+
+
+        {% else %}
+        <p>Ville sélectionnée : {{city_name}}</p>
+        <p>Zone sélectionnée : {{zone_name}}</p>
+
+        <p>Déchet sélectionné : {{garbage_name }} </p>
+
+        {% for location in garbage_locations %}
+        <ul>
+            <li> {{ location }} </li>
+        </ul>
         {% endfor %}
-    </select>
-    <input type="submit" value="Je valide !">
-</form>
+        {% endif %}
 
-
-{% elif not zone_id %}
-<!-- <p> Image ou lien Ville :{{ City.name }}</p> -->
-<p>Ville sélectionnée : {{city_name}}</p>
-<form action="{% url 'search:search_city' city_id city_name %}" method="post">
-    {% csrf_token %}
-    <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
-    <select name="selected_zone">
-        {% for zone in zones %}
-        <option value={{zone.name}}> {{zone.name}} </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Je valide !">
-</form>
-<img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
-
-
-{% elif not garbage_locations %}
-<p>Ville sélectionnée : {{city_name}}</p>
-<p>Zone sélectionnée : {{zone_name}}</p>
-<form action="{% url 'search:search_city' city_id city_name zone_id zone_name %}" method="post">
-    {% csrf_token %}
-    <label for="garbage_select">Sélectionnez un déchet : </label>
-    <select name="selected_garbage">
-        {% for garbage in garbages %}
-        <option value={{garbage.name}}> {{garbage.name}} </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Je valide !">
-</form>
-
-
-{% else %}
-<p>Ville sélectionnée : {{city_name}}</p>
-<p>Zone sélectionnée : {{zone_name}}</p>
-
-<p>Déchet sélectionné : {{garbage_name }} </p>
-
-{% for location in garbage_locations %}
-<ul>
-    <li> {{ location }} </li>
-</ul>
-<!-- <ul>
-            <li>  garbage_loc_day_time["name"]  </li>
-            <li>  garbage_loc_day_time["name"]["day"]  </li>
-            <li>  garbage_loc_day_time["name"]["time"]  </li>
-        </ul> -->
-{% endfor %}
-<!-- {% endif %} -->
-
-{% endblock %}
-</body>
-
-</html>
+        {% endblock %}
+    </div>
+</div>

@@ -14,7 +14,6 @@
 }
 
 body{
-    font-family: 'Courgette','Tahoma', cursive;
     overflow-x: hidden;
 }
 a{
@@ -157,7 +156,8 @@ fieldset{
     margin: 1rem;
 }
 input{
-    width: 100%;
+    background-color: var(--lightGreen);
+    /* width: 100%; */
     border-radius: 10px;
     padding: 0.3rem;
     border: #366859 solid 1px;
@@ -165,7 +165,7 @@ input{
 }
 label{
     text-align: right;
-    width: 50%;
+    /* width: 50%; */
     padding-right: 1.8rem;
     margin: 0;
     font-weight: 600;

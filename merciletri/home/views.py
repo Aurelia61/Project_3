@@ -1,18 +1,6 @@
 from django.shortcuts import render
-
-# TEST #############################################################
-#todo delete if not working
 from search.models import City, CollectLocation, Zone, Garbage, GarbageType
-########################################################################
 
-# todo this code works ##################################################
-# def home(request):
-#     """
-        
-#     """
-
-#     return render (request, 'home/home.html')
-# todo ###########################################################
 
 def home(request, city_id=None, zone_id=None, city_name=None, zone_name=None, garbage_name=None):
     """

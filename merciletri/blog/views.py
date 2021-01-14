@@ -2,7 +2,91 @@ from django.shortcuts import render
 from django.views import generic
 
 from .models import Article
+from search.models import City, CollectLocation, Zone, Garbage, GarbageType
 
+
+def search_on_article_page(request, city_id=None, zone_id=None, city_name=None, zone_name=None, garbage_name=None):
+    """
+        get the city
+    """
+
+    city_image = ""
+    cities = City.objects.all()
+    city_name = city_name
+    zones = None
+    zone_name = zone_name
+    garbages = None
+    type_id = None
+    selected_garbage = None
+    garbage_locations = []
+    garbage_name = garbage_name
+    
+    if request.method == "POST":
+
+        if city_id is None and zone_id is None:
+            selected_city = request.POST.get("selected_city", None)
+            print (f" ville : {selected_city}")
+
+            for city in cities :
+                if selected_city == city.name :
+                    city_image = city.image.url
+                    city_id = city.id
+                    city_name = city.name
+                    break;
+
+            zones = Zone.objects.filter(city_id=city_id)
+            print(f"toutes les zones de la ville : {zones}")
+        
+        elif zone_id is None:
+            zones = Zone.objects.filter(city_id=city_id)
+            print(f"toutes les zones de la ville : {zones}")
+            
+            selected_zone = request.POST.get("selected_zone", None)
+            print (f"zone : {selected_zone}")
+
+            for zone in zones :
+                if selected_zone == zone.name :
+                    zone_id = zone.id
+                    zone_name = zone.name
+                    break;
+
+            garbages = Garbage.objects.all()
+            print(f"tous les déchets de la ville : {garbages}")
+
+        else:
+
+            garbages = Garbage.objects.all()
+            print(f"tous les déchets de la ville : {garbages}")
+            
+            selected_garbage = request.POST.get("selected_garbage", None)
+            print (f"déchet : {selected_garbage}")
+
+            type_id = None
+            #todo faire des compréhensions de liste
+            for garbage in garbages :
+                if selected_garbage == garbage.name :
+                    type_id = garbage.garbagetype_id
+                    garbage_name = garbage.name
+                    break;
+                    print(f"Type : {type_id}")
+
+    return render(
+        request, 
+        'blog/article.html', 
+        {
+            "cities": cities, 
+            "city_image": city_image, 
+            "city_id": city_id,
+            "city_name": city_name,
+            "zones": zones, 
+            "zone_id": zone_id,
+            "zone_name": zone_name,
+            "garbages": garbages, 
+            "selected_garbage": selected_garbage,
+            "garbage_locations": garbage_locations,
+            "garbage_name" : garbage_name,
+            # "garbage_loc_day_time": garbage_loc_day_time
+        })
 
 class BlogIndex(generic.ListView):
     """
@@ -41,6 +125,7 @@ class DetailArticle(generic.DetailView):
 
     # path to the template for this view
     template_name = "blog/article.html"
+
 
 
 

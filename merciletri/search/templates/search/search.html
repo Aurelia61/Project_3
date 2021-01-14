@@ -8,7 +8,7 @@ Merci le Tri - Recherche
 Où va ce déchet ?
 {% endblock page_title %}
 {% block article_content %}
-<!-- {% if not city_id %} -->
+{% if not city_id %}
 <form action="{% url 'search:search_city' %}" method="post">
     {% csrf_token %}
     <label for="city_select">Sélectionnez une ville : </label>
@@ -21,7 +21,7 @@ Où va ce déchet ?
 </form>
 
 
-<!-- {% elif not zone_id %} -->
+{% elif not zone_id %}
 <!-- <p> Image ou lien Ville :{{ City.name }}</p> -->
 <p>Ville sélectionnée : {{city_name}}</p>
 <form action="{% url 'search:search_city' city_id city_name %}" method="post">
@@ -37,7 +37,7 @@ Où va ce déchet ?
 <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
 
 
-<!-- {% elif not garbage_locations %} -->
+{% elif not garbage_locations %}
 <p>Ville sélectionnée : {{city_name}}</p>
 <p>Zone sélectionnée : {{zone_name}}</p>
 <form action="{% url 'search:search_city' city_id city_name zone_id zone_name %}" method="post">
@@ -52,7 +52,7 @@ Où va ce déchet ?
 </form>
 
 
-<!-- {% else %} -->
+{% else %}
 <p>Ville sélectionnée : {{city_name}}</p>
 <p>Zone sélectionnée : {{zone_name}}</p>
 

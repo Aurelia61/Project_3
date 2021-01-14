@@ -1,0 +1,49 @@
+/* form */
+#form{
+    background-color: var(--beige);
+    padding: 3rem;
+}
+form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+fieldset{
+    width: 75%;
+}
+.input-style{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem;
+}
+input{
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.3rem;
+    border: #366859 solid 1px;
+    outline: none;
+}
+label{
+    text-align: right;
+    width: 50%;
+    padding-right: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+button{
+    padding: 1.5rem 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--darkGreen);
+    color: white;
+    transition: all 0.2s linear;
+}
+button:hover{
+    background-color: #64793B;
+    border:2px solid white;
+}
+

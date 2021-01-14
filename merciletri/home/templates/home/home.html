@@ -7,143 +7,151 @@
 {% block page_title %} La première app qui t'aide à trier tes déchets dans la bonne poubelle {% endblock page_title %}
 
 {% block search_top %}
-<p> COUCOU</p>
 
 <!--form-->
+<div class="row" id="form">
+    <div class="col-12">
+        <p>Pour savoir où déposer votre déchet,</p>
+        <fieldset>
+            {% if not city_id %}
+            <form action="{% url 'home:home' %}" method="post">
+                {% csrf_token %}
+                <label for="city_select">Sélectionnez une ville : </label>
+                <select name="selected_city">
+                    {% for city in cities %}
+                    <option value={{city.name}}> {{city.name}} </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Je valide !">
+            </form>
 
-<div class="col-12">
-    <form action="{{ 'home:home' }}" method="post">
-        {% csrf_token %}
-        <label for="city_select">Sélectionnez une ville : </label>
-        <select name="selected_city">
-            {% for city in cities %}
-            <option value={{city.name}}> {{city.name}} </option>
+            {% elif not zone_id %}
+            <p>Ville sélectionnée : {{city_name}}</p>
+            <form action="{% url 'home:home' city_id city_name %}" method="post">
+                {% csrf_token %}
+                <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
+                <select name="selected_zone">
+                    {% for zone in zones %}
+                    <option value={{zone.name}}> {{zone.name}} </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Je valide !">
+            </form>
+            <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
+
+            {% elif not garbage_locations %}
+            <p>Ville sélectionnée : {{city_name}}</p>
+            <p>Zone sélectionnée : {{zone_name}}</p>
+            <form action="{% url 'home:home' city_id city_name zone_id zone_name %}" method="post">
+                {% csrf_token %}
+                <label for="garbage_select">Sélectionnez un déchet : </label>
+                <select name="selected_garbage">
+                    {% for garbage in garbages %}
+                    <option value={{garbage.name}}> {{garbage.name}} </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Je valide !">
+            </form>
+
+            {% else %}
+            <p>Ville sélectionnée : {{city_name}}</p>
+            <p>Zone sélectionnée : {{zone_name}}</p>
+
+            <p>Déchet sélectionné : {{garbage_name }} </p>
+
+            {% for location in garbage_locations %}
+            <ul>
+                <li> {{ location }} </li>
+            </ul>
             {% endfor %}
-        </select>
-        <input type="submit" value="Je valide !">
-    </form>
+            {% endif %}
 
-
-<p>Ville sélectionnée : {{city_name}}</p>
-<form action="{{ 'home:home city_id city_name' }}" method="post">
-    {% csrf_token %}
-    <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
-    <select name="selected_zone">
-        {% for zone in zones %}
-        <option value={{zone.name}}> {{zone.name}} </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Je valide !">
-</form>
-<img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
-
-
-<p>Ville sélectionnée : {{city_name}}</p>
-<p>Zone sélectionnée : {{zone_name}}</p>
-<form action="{{ 'home:home city_id city_name zone_id zone_name' }}" method="post">
-    {% csrf_token %}
-    <label for="garbage_select">Sélectionnez un déchet : </label>
-    <select name="selected_garbage">
-        {% for garbage in garbages %}
-        <option value={{garbage.name}}> {{garbage.name}} </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Je valide !">
-</form>
-
-
-<p>Ville sélectionnée : {{city_name}}</p>
-<p>Zone sélectionnée : {{zone_name}}</p>
-
-<p>Déchet sélectionné : {{garbage_name }} </p>
-
-{% for location in garbage_locations %}
-<ul>
-    <li> {{ location }} </li>
-</ul>
-{% endfor %}
-
-
-
-    <!-- <div class="row" id="form"> -->
-    <!-- <div class="col-12"> -->
-    <!-- <form> -->
-    <!-- <fieldset> -->
-    <!-- <div class="input-style"> -->
-    <!-- <label>Où es-tu?</label> -->
-    <!-- <input type="text" placeholder="adresse, lieu, code postal..."> -->
-    <!-- </div> -->
-    <!-- <div class="input-style"> -->
-    <!-- <label>Quel est ton objet à jeter?</label> -->
-    <!-- <input type="text" placeholder="nom, matière etc.."> -->
-    <!-- </div> -->
-    <!-- </fieldset> -->
-    <!-- <div> -->
-    <!-- <button type="submit">rechercher</button> -->
-    <!-- </div> -->
-    <!-- </form> -->
-    <!-- </div> -->
-    <!-- </div> -->
-    {% endblock %}
-
-
-    {% block cards %}
-    <hr>
-    <!--other pages-->
-    <div class="row">
-        <div class="col-12">
-            <h2>Des astuces pour mieux trier</h2>
-        </div>
+        </fieldset>
     </div>
-    <!--cards-->
-    <div class="row" id="card">
-        <!--card#1-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/chemin_foret.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">recycler</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
-                    <a class="card-infos-button" href="/blog/article/6">Read more <i
-                            class="fas fa-arrow-right arrow"></i></a>
+</div>
+
+
+<!-- <div class="row" id="form"> -->
+<!-- <div class="col-12"> -->
+<!-- <form> -->
+
+<!-- <fieldset> -->
+    
+<!-- <div class="input-style"> -->
+<!-- <label>Où es-tu?</label> -->
+<!-- <input type="text" placeholder="adresse, lieu, code postal..."> -->
+<!-- </div> -->
+<!-- <div class="input-style"> -->
+<!-- <label>Quel est ton objet à jeter?</label> -->
+<!-- <input type="text" placeholder="nom, matière etc.."> -->
+<!-- </div> -->
+<!-- </fieldset> -->
+<!-- <div> -->
+<!-- <button type="submit">rechercher</button> -->
+<!-- </div> -->
+<!-- </form> -->
+<!-- </div> -->
+<!-- </div> -->
+{% endblock %}
+
+
+{% block cards %}
+<hr>
+<!--other pages-->
+<div class="row">
+    <div class="col-12">
+        <h2>Des astuces pour mieux trier</h2>
+    </div>
+</div>
+<!--cards-->
+<div class="row" id="card">
+    <!--card#1-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/chemin_foret.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">recycler</span>
                 </div>
             </div>
-        </div>
-        <!--card#2-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/frog.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">donner</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
-                    <a class="card-infos-button" href="/blog/article/7">Read more <i
-                            class="fas fa-arrow-right arrow"></i></a>
-                </div>
-            </div>
-        </div>
-        <!--card#3-->
-        <div class="col-lg-4 col-sm-12">
-            <div class="card-container">
-                <div class="card-img">
-                    <img class="card-img-item" src="{% static 'home/images/poubelle_verte.jpg' %}">
-                    <div class="card-img-icon">
-                        <span class="card-img-icon-text">composter</span>
-                    </div>
-                </div>
-                <div class="card-infos">
-                    <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
-                    <a class="card-infos-button" href="/blog/article/8">Read more <i
-                            class="fas fa-arrow-right arrow"></i></a>
-                </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">10 bonnes pratiques pour recycler efficacement</h3>
+                <a class="card-infos-button" href="/blog/article/6">Read more <i
+                        class="fas fa-arrow-right arrow"></i></a>
             </div>
         </div>
     </div>
-    {% endblock %}
+    <!--card#2-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/frog.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">donner</span>
+                </div>
+            </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">Où, quoi, comment donner?</h3>
+                <a class="card-infos-button" href="/blog/article/7">Read more <i
+                        class="fas fa-arrow-right arrow"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--card#3-->
+    <div class="col-lg-4 col-sm-12">
+        <div class="card-container">
+            <div class="card-img">
+                <img class="card-img-item" src="{% static 'home/images/poubelle_verte.jpg' %}">
+                <div class="card-img-icon">
+                    <span class="card-img-icon-text">composter</span>
+                </div>
+            </div>
+            <div class="card-infos">
+                <h3 class="card-infos-title">Avec ou sans jardin, on peut composter!</h3>
+                <a class="card-infos-button" href="/blog/article/8">Read more <i
+                        class="fas fa-arrow-right arrow"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

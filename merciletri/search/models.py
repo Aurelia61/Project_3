@@ -247,8 +247,3 @@ class CollectLocation(models.Model):
         verbose_name = "Lieu de collecte"
         verbose_name_plural = "Lieux de collecte"
         ordering = ["name"]
-
-
-
-
-

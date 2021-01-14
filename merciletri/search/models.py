@@ -107,6 +107,19 @@ class Garbage(models.Model):
         max_length = 100
     )
 
+    image = models.ImageField(
+        "Image",
+        upload_to = "",
+        blank = True
+    )
+
+    destination = models.CharField(
+        "Destination",
+        max_length = 60,
+        null = False,
+        default = "Poubelle d'ordures ménagères"
+    )
+
     garbagetype = models.ForeignKey(
         GarbageType,
         # if a type is deleted, all the dependant garbages will be kept

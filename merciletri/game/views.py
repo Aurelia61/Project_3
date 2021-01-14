@@ -1,19 +1,56 @@
 from django.shortcuts import render
 from search.models import City, CollectLocation, Zone, Garbage, GarbageType
 
-
 import random
 
-def game(request):
-    return render(request, 'game/game.html')
+def game(request, dest_resulat=None):
+
+    # get image of one garbage randomly
+    selected_garbage = random.choice(Garbage.objects.all())
+    image = selected_garbage.image
+    good_answer = selected_garbage.destination
+
+    # get all the garbages
+    garbages = Garbage.objects.all()
+
+    # get all destinations without duplicates 
+    destinations = []
+    for dest in garbages:
+        destinations.append(dest.destination)
+    destinations = list(dict.fromkeys(destinations))
+
+    resultat = ""
+
+    if request.method == "POST":
+        selected_destination = request.POST.get ("selected_destination", None)
+        dest_resulat = True
+        if selected_destination == good_answer:
+            resultat = "C'est gagné !"
+        else:
+            resultat = "Perdu"
 
 
+    return render(
+        request, 
+        'game/game.html',
+        {
+            "Garbages" : garbages,
+            "Destinations" : destinations,
+            "Selected_garbage" : selected_garbage,
+            "Image" : image,
+            "Dest_resultat" : dest_resulat,
+            "Resultat" : resultat,
 
+        })
+
+
+# if __name__ == '__main':
+#     game()
 
 
 ###################### ALAIN #######################
 
-# def Game(request, plant_id=None):
+# def Game(request, id=None):
 #     """
 #         Mini game
 # #!        @ -> Redirect to login if not already logged (and back to game)

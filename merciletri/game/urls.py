@@ -1,9 +1,14 @@
+# imports
 from django.urls import path, include
+
+# models imports
 from . import views
 
+# namespace
 app_name = 'game'
 
+# routes
 urlpatterns = [
-    # the 'name' value as called by the {% url %} template tag
-    path('', views.game, name="game")
+    path("", views.game, name="game"),
+    # path("<int:garbage_id>/", views.game, name="game"),
 ]

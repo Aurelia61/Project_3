@@ -4,16 +4,57 @@
 <script type="text/javascript" src="/merciletri/home/static/home/js/game.js' %}"></script>
 
 {% block game %}
+<div class="game">
+    <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
+    <!-- {% for garb in Garbages %}
+        <ul>
+            <li value={{garb.name}}>{{garb.name}}</li>
+        </ul>
+    {%endfor%} -->
 
-<section class="modules">
-    <div class="row">
-            <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1"/>
-            <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2"/>
-            <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3"/>
-            <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4"/>
-            <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5"/>
-            <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6"/>
-            <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7"/>
-    </div>
-</section>
+    <!-- <form action="{% url 'game:game' %}" method="post">
+        {% csrf_token %}
+        <label for="garbage_select">Sélectionnez un déchet : </label>
+        <select name="selected_garbage">
+            {% for garb in Garbages %}
+                <option value={{garb.name}}> {{garb.name}} </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Je valide !">
+    </form> -->
+
+    <!-- {% for dest in Destinations %}
+        <ul>
+            <li value={{dest}}>{{dest}}</li>
+        </ul>
+    {%endfor%} -->
+
+    <form action="{% url 'game:game' %}" method="post">
+        {% csrf_token %}
+        <label for="destination_select">Où va ce déchet ? </label>
+        <select name="selected_destination">
+            {% for dest in Destinations %}
+                <option value={{dest}}> {{dest}} </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Je valide !">
+    </form>
+
+    {% if Dest_resultat %}
+        {{Resultat}}
+    {% endif %}
+
+
+    <section class="modules">
+        <div class="row">
+            <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1" />
+            <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2" />
+            <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3" />
+            <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4" />
+            <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5" />
+            <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6" />
+            <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7" />
+        </div>
+    </section>
+</div>
 {% endblock %}

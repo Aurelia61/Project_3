@@ -1,0 +1,19 @@
+{% extends "home/main_layout.html" %}
+{% load static %}
+{{ block.super }}
+<script type="text/javascript" src="/merciletri/home/static/home/js/game.js' %}"></script>
+
+{% block game %}
+
+<section class="modules">
+    <div class="row">
+            <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1"/>
+            <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2"/>
+            <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3"/>
+            <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4"/>
+            <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5"/>
+            <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6"/>
+            <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7"/>
+    </div>
+</section>
+{% endblock %}

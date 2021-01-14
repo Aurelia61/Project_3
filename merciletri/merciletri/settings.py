@@ -140,5 +140,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "StaticFiles")
 
 # for uploaded files
-# MEDIA_ROOT = os.path.join(BASE_DIR, "UploadedFiles")
-# MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "UploadedFiles")
+MEDIA_URL = "/media/"

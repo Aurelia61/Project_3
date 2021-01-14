@@ -78,6 +78,42 @@ a{
     width: 80%;
 }
 
+/* game page */
+.modules img{
+        border-radius: 15%;
+        opacity:0.3;
+        position: absolute;
+        z-index: -1;
+        width:10%;
+    }
+    #moved-1{
+        left: 48%;
+    }
+    #moved-2{
+        left: 18%;
+        margin-top: 18%;
+    }
+    #moved-3{
+        left: 35%;
+        margin-top: 35%;
+    }
+    #moved-4{
+        left: 68%;
+        margin-top: 38%;
+    }
+    #moved-5{
+        left: 86%;
+        margin-top: 36%;
+    }
+    #moved-6{
+        left: 92%;
+        margin-top: 12%;
+    }
+    #moved-7{
+        left: 72%;
+        margin-top: 6%;
+    }
+
 /* card */
 #card{
     margin: 2rem 0rem;

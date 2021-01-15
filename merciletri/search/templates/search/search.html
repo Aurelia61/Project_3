@@ -27,7 +27,7 @@ Où va ce déchet ?
 
         {% elif not zone_id %}
         <p>Ville sélectionnée : {{city_name}}</p>
-        <form action="{% url 'search:search_city' city_id city_name %}" method="post">
+        <form action="{% url 'search:search_city' city_id %}" method="post">
             {% csrf_token %}
             <label for="zone_select">Sélectionnez une zone d'après l'image ci_dessous : </label>
             <select name="selected_zone">
@@ -43,7 +43,7 @@ Où va ce déchet ?
         {% elif not garbage_locations %}
         <p>Ville sélectionnée : {{city_name}}</p>
         <p>Zone sélectionnée : {{zone_name}}</p>
-        <form action="{% url 'search:search_city' city_id city_name zone_id zone_name %}" method="post">
+        <form action="{% url 'search:search_city' city_id zone_id %}" method="post">
             {% csrf_token %}
             <label for="garbage_select">Sélectionnez un déchet : </label>
             <select name="selected_garbage">

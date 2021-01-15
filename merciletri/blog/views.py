@@ -151,3 +151,4 @@ class DetailArticle(generic.DetailView):
 
 
 #     return render(request, 'blog/blog_index.html', dict_articles)
+

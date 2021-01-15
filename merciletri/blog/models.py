@@ -32,3 +32,4 @@ class Article(models.Model):
         
         # change the name of the article by his title on admin page (without it should be named "Article object (n)")
         return self.title
+

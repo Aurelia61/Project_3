@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/merciletri/home/static/home/js/game.js' %}"></script>
+
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -17,6 +19,8 @@
     <!--css file-->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+    <script type="text/javascript" src="{% static 'home/js/game.js' %}"></script>
+
     <!-- Title of the page on navigator -->
     <title>{%block navigator_title %}Merci le Tri{% endblock navigator_title %}</title>
 </head>
@@ -69,6 +73,11 @@
                 {% endblock %}
             </section>
 
+            <section id = "game">
+                {% block game %}
+                {% endblock %}
+            </section>
+            
             <section id = "search_top">
                 {% block search_top %}
                 {% endblock %}

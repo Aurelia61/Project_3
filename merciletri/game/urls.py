@@ -1,16 +1,14 @@
+# imports
 from django.urls import path, include
+
+# models imports
 from . import views
 
+# namespace
 app_name = 'game'
 
+# routes
 urlpatterns = [
-    # the 'name' value as called by the {% url %} template tag
-    #todo change
-    #todo path('', views.BlogIndex.as_view(), name = 'blog_index'),
-    #todo path('article/<int:pk>/', views.DetailArticle.as_view(), name = 'article'),
+    path("", views.game, name="game"),
+    # path("<int:garbage_id>/", views.game, name="game"),
 ]
-
-
-
-#* for not generic view
-# path('blog/', views.blog_index, name = 'blog_index'),

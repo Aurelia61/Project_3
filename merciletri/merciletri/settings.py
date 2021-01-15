@@ -85,17 +85,18 @@ DATABASES = {
     'default': {
         # local database
             # 'ENGINE': 'django.db.backends.postgresql',
+            # 'NAME': 'merciletri',
             # 'USER': 'postgres',
             # 'PASSWORD': 'Formation2020-at',
             # 'HOST': 'localhost',
-            # 'PORT': "15006"
+            # 'PORT': "5432"
         # remote database
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'merciletri',
-        'USER': 'postgres',
-        'PASSWORD': 'AdminP3MlT',
-        'HOST': 'ale-pyt-2006-pjt-p3-merciletri-db.pythonrover.wilders.dev',
-        'PORT': "15006"
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'merciletri',
+            'USER': 'postgres',
+            'PASSWORD': 'AdminP3MlT',
+            'HOST': 'ale-pyt-2006-pjt-p3-merciletri-db.pythonrover.wilders.dev',
+            'PORT': "15006"
     }
 
 }
@@ -140,5 +141,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "StaticFiles")
 
 # for uploaded files
-# MEDIA_ROOT = os.path.join(BASE_DIR, "UploadedFiles")
-# MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "UploadedFiles")
+MEDIA_URL = "/media/"

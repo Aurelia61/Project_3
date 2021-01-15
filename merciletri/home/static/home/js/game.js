@@ -1,6 +1,5 @@
-// alert("It's working");
+alert("It's working");
     
-
 document.addEventListener("DOMContentLoaded", (event) => {
     let icon_moves = [["48%", "0%"], ["18%", "18%"], ["35%", "35%"], ["68%", "38%"],
     ["86%", "36%"], ["92%", "12%"], ["72%", "6%"]],

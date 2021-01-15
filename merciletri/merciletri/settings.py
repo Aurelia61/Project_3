@@ -84,19 +84,19 @@ WSGI_APPLICATION = 'merciletri.wsgi.application'
 DATABASES = {
     'default': {
         # local database
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'merciletri',
-            'USER': 'postgres',
-            'PASSWORD': 'Formation2020-at',
-            'HOST': 'localhost',
-            'PORT': "5432"
-        # remote database
             # 'ENGINE': 'django.db.backends.postgresql',
             # 'NAME': 'merciletri',
             # 'USER': 'postgres',
-            # 'PASSWORD': 'AdminP3MlT',
-            # 'HOST': 'ale-pyt-2006-pjt-p3-merciletri-db.pythonrover.wilders.dev',
-            # 'PORT': "15006"
+            # 'PASSWORD': 'Formation2020-at',
+            # 'HOST': 'localhost',
+            # 'PORT': "5432"
+        # remote database
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'merciletri',
+            'USER': 'postgres',
+            'PASSWORD': 'AdminP3MlT',
+            'HOST': 'ale-pyt-2006-pjt-p3-merciletri-db.pythonrover.wilders.dev',
+            'PORT': "15006"
     }
 
 }

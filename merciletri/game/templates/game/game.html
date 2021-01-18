@@ -3,10 +3,14 @@
 {{ block.super }}
 <script type="text/javascript" src="/merciletri/home/static/home/js/game.js' %}"></script>
 
+{% block page_title %} Jeu {% endblock page_title %}
+
 {% block game %}
 <div class="game">
-    <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
-    <!-- {% for garb in Garbages %}
+    <div class=img-garbage> 
+        <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
+    </div>
+<!-- {% for garb in Garbages %}
         <ul>
             <li value={{garb.name}}>{{garb.name}}</li>
         </ul>
@@ -29,7 +33,7 @@
         </ul>
     {%endfor%} -->
 
-    <form action="{% url 'game:game' %}" method="post">
+    <form class='response' action="{% url 'game:game' %}" method="post">
         {% csrf_token %}
         <label for="destination_select">Où va ce déchet ? </label>
         <select name="selected_destination">

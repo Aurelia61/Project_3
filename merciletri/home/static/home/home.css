@@ -177,7 +177,7 @@ a{
     font-size:0.7rem;
 }
 
-/* form */
+/* search */
 #form{
     background-color: var(--splash);
     padding: 3rem;
@@ -225,6 +225,27 @@ button{
 button:hover{
     background-color: var(--green);
     border:2px solid var(--floral);
+}
+.map img{
+    width:50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* game*/
+.img-garbage img{
+    width:20%;
+    display: block;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.response{
+    display: grid;
+}
+.response label {
+    text-align: center;
 }
 
 /* footer */

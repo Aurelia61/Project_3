@@ -36,13 +36,15 @@
                         <!--button-->
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myTopnav"
                             aria-controls="myTopnav" aria-expanded="false" aria-label="Toggle navigation">
+                            <img class="logo align-center" src="{% static 'home/images/logo.png' %}"
+                            alt="Logo Merci le tri">
                             <span class="icon"><i class="fas fa-bars"></i></span>
                         </button>
                         <div class="topnav collapse navbar-collapse" id="myTopnav">
                             <div class="navbar-nav">
                                 <a class="navbar-brand" href="/">
                                     <img class="logo align-center" src="{% static 'home/images/logo.png' %}"
-                                        alt="">
+                                        alt="Logo Merci le tri">
                                 </a>
                                 <a class="navbar-item nav-link" href="/private/">Page Personnelle</a>
                                 <a class="navbar-item nav-link" href="/game/">Jeu</a>
@@ -64,7 +66,7 @@
                 <!--title-->
                 <div class="row" id="title">
                     <div class="col-12">
-                        <h1 class="title"> {% block page_title %} Bienvenue sur le site Merci le Tri {% endblock page_title %}</h1>
+                        <h2 class="title"> {% block page_title %} Bienvenue sur le site Merci le Tri {% endblock page_title %}</h2>
                     </div>
                 </div>
                 <!--content-->
@@ -99,7 +101,7 @@
                 <div class="col-12">
                     <div class="footer">
                         <div class="footer-logo">
-                            <a href="#" class="footer-link"><img src="{% static 'home/images/logo.png' %}" alt="logo" class="footer-logo-item"></a>
+                            <a href="#" class="footer-link"><img src="{% static 'home/images/logo.png' %}" alt="Logo Merci le tri" class="footer-logo-item"></a>
                         </div>
                         <a href="#" class="footer-link">Contact</a>
                         <a href="#" class="footer-link">Politique de cookies</a>

@@ -22,6 +22,9 @@ a{
     text-decoration: none;
     color: var(--stromboli);
 }
+h2{
+    font-size: courgette;
+}
 
 /*nav*/
 #nav{
@@ -38,6 +41,9 @@ a{
 }
 .logo{
     width: 100%;
+}
+.icon{
+    color:black;
 }
 .nav-link{
     color: black;
@@ -58,7 +64,7 @@ a{
 }
 .search:focus{
     outline:none;
-    border:var(--stromboli) solid 2px;
+    border:var(--mantis) solid 2px;
 }
 
 /* title */
@@ -223,7 +229,7 @@ button{
     transition: all 0.2s linear;
 }
 button:hover{
-    background-color: var(--green);
+    background-color: var(--floral);
     border:2px solid var(--floral);
 }
 .map img{
@@ -292,6 +298,7 @@ width: 100%;
     }
     .navbar-collapse{
         width: 100%;
+        background-color:var(--floral)
     }
     .navbar-brand{
         width: 100%;
@@ -305,7 +312,7 @@ width: 100%;
         padding: 1rem;
     }
     .nav-link{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     #title{
         margin-bottom: 0;

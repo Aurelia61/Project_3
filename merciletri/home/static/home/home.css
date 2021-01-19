@@ -23,7 +23,7 @@ a{
     color: var(--stromboli);
 }
 h2{
-    font-size: courgette;
+    font-family: 'Courgette', cursive;
 }
 
 /*nav*/

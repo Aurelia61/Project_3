@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    let icon_moves = [["48%", "0%"], ["18%", "18%"], ["35%", "35%"], ["68%", "38%"],
-    ["86%", "36%"], ["92%", "12%"], ["72%", "6%"]],
+    let icon_moves = [["38%", "0%"], ["18%", "8%"], ["25%", "18%"], ["38%", "20%"],
+    ["56%", "16%"], ["72%", "8%"], ["58%", "2%"]],
         icons = [],
         position = 0;
     for (let i = 1; i < 8; i++) {
@@ -26,5 +26,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
     setInterval(function () {
         oneTurn();
-    }, 2500)
+    }, 500)
 })

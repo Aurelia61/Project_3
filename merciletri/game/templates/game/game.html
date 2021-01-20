@@ -7,31 +7,32 @@
 
 {% block game %}
 
+{% if not Running and not Dest_resultat %}
 <section class="modules">
     <div class="row">
-        <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1" />
-        <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2" />
-        <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3" />
-        <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4" />
-        <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5" />
-        <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6" />
-        <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7" />
+        <img src="{% static 'game/images/banana.png' %}" alt="Banane" id="moved-1" />
+        <img src="{% static 'game/images/milk.png' %}" alt="Sales logo" id="moved-2" />
+        <img src="{% static 'game/images/plastic-bottles.png' %}" alt="Purchase logo" id="moved-3" />
+        <img src="{% static 'game/images/tree-leaves.png' %}" alt="Accountancy logo" id="moved-4" />
+        <img src="{% static 'game/images/newspaper.png' %}" alt="Ecommerce logo" id="moved-5" />
+        <img src="{% static 'game/images/can.png' %}" alt="MRP logo" id="moved-6" />
+        <img src="{% static 'game/images/pizza.png' %}" alt="Project logo" id="moved-7" />
     </div>
 </section>
 
 <form class='response' action="{% url 'game:game' %}" method="post">
     {% csrf_token %}
-    <input class="" btn btn-primary" type="submit" name ="ask_running" value="JOUER" />
+    <input class="btn btn-primary" type="submit" name ="ask_running" value="JOUER" />
 </form>
 {{Running}}
 
-{% if Running and not dest_resulat%}
+{% elif not Dest_resultat %}
     <div class="game">
         <div class=img-garbage>
             <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
         </div>
 
-        <form class='response' action="{% url 'game:game' %}" method="post">
+        <form class='response' action="{% url 'game:game' Selected_garbage.id %}" method="post">
             {% csrf_token %}
             <label for="destination_select">Où va ce déchet ? </label>
             <select name="selected_destination">
@@ -41,11 +42,11 @@
             </select>
             <input type="submit" value="Je valide !">
         </form>
-
-        {% if Dest_resultat %}
-        {{Resultat}}
-        {% endif %}
     </div>
-    {% endif %}
+    
+{% else %}
+    {{Resultat}}
+
+{% endif %}
 
 {% endblock %}

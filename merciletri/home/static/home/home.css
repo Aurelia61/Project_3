@@ -91,39 +91,49 @@ h2{
 }
 
 /* game page */
+.btn{
+    margin-top: 160%;
+    margin-bottom: 250%;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--stromboli);
+    color: var(--floral);
+
+}
 .modules img{
         border-radius: 15%;
         opacity:0.3;
         position: absolute;
         z-index: -1;
-        width:10%;
+        width:5%;
     }
     #moved-1{
-        left: 48%;
+        left: 38%;
     }
     #moved-2{
         left: 18%;
-        margin-top: 18%;
+        margin-top: 8%;
     }
     #moved-3{
-        left: 35%;
-        margin-top: 35%;
+        left: 25%;
+        margin-top: 18%;
     }
     #moved-4{
-        left: 68%;
-        margin-top: 38%;
+        left: 38%;
+        margin-top: 20%;
     }
     #moved-5{
-        left: 86%;
-        margin-top: 36%;
+        left: 56%;
+        margin-top: 16%;
     }
     #moved-6{
-        left: 92%;
-        margin-top: 12%;
+        left: 72%;
+        margin-top: 8%;
     }
     #moved-7{
-        left: 72%;
-        margin-top: 6%;
+        left: 58%;
+        margin-top: 2%;
     }
 
 /* card */

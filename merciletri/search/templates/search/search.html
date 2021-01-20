@@ -55,18 +55,17 @@ Où va ce déchet ?
             <input type="submit" value="Je valide !">
         </form>
 
-
         {% else %}
-        <p>Ville sélectionnée : {{city_name}}</p>
-        <p>Zone sélectionnée : {{zone_name}}</p>
+            <p>Ville sélectionnée : {{city_name}}</p>
+            <p>Zone sélectionnée : {{zone_name}}</p>
 
-        <p>Déchet sélectionné : {{garbage_name }} </p>
+            <p>Déchet sélectionné : {{garbage_name }} </p>
 
-        {% for location in garbage_locations %}
-        <ul>
-            <li> {{ location }} </li>
-        </ul>
-        {% endfor %}
+            {% for location in garbage_locations %}
+                <ul>
+                    <li> {{ location }} </li>
+                </ul>
+            {% endfor %}
         {% endif %}
 
         {% endblock %}

@@ -7,41 +7,25 @@
 
 {% block game %}
 
-    <form action="{% url 'game:game' %}" method="POST">
-<div class="game">
-    <div class=img-garbage> 
-        <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
+<section class="modules">
+    <div class="row">
+        <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1" />
+        <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2" />
+        <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3" />
+        <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4" />
+        <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5" />
+        <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6" />
+        <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7" />
     </div>
-<!-- {% for garb in Garbages %}
-        <ul>
-            <li value={{garb.name}}>{{garb.name}}</li>
-        </ul>
-    {%endfor%} -->
+</section>
 
-    <!-- <form action="{% url 'game:game' %}" method="post">
-        {% csrf_token %}
-        <label for="garbage_select">Sélectionnez un déchet : </label>
-        <select name="selected_garbage">
-            {% for garb in Garbages %}
-                <option value={{garb.name}}> {{garb.name}} </option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Je valide !">
-    </form> -->
+<form class='response' action="{% url 'game:game' %}" method="post">
+    {% csrf_token %}
+    <input class="" btn btn-primary" type="submit" name ="ask_running" value="JOUER" />
+</form>
+{{Running}}
 
-    <!-- {% for dest in Destinations %}
-        <ul>
-            <li value={{dest}}>{{dest}}</li>
-        </ul>
-    {%endfor%} -->
-
-    <form class='response' action="{% url 'game:game' %}" method="post">
-        {% csrf_token %}
-        <input class="" btn btn-primary" type="submit" value="JOUER" />
-    </form>
-
-    {% if Running and not dest_resulat%}
-    {{Running}}
+{% if Running and not dest_resulat%}
     <div class="game">
         <div class=img-garbage>
             <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
@@ -61,18 +45,6 @@
         {% if Dest_resultat %}
         {{Resultat}}
         {% endif %}
-
-        <section class="modules">
-            <div class="row">
-                <img src="/theme_subteno/static/src/img/odoo/crm.png" alt="CRM logo" id="moved-1" />
-                <img src="/theme_subteno/static/src/img/odoo/sales.png" alt="Sales logo" id="moved-2" />
-                <img src="/theme_subteno/static/src/img/odoo/purchase.png" alt="Purchase logo" id="moved-3" />
-                <img src="/theme_subteno/static/src/img/odoo/accountancy.png" alt="Accountancy logo" id="moved-4" />
-                <img src="/theme_subteno/static/src/img/odoo/ecommerce.png" alt="Ecommerce logo" id="moved-5" />
-                <img src="/theme_subteno/static/src/img/odoo/mrp.png" alt="MRP logo" id="moved-6" />
-                <img src="/theme_subteno/static/src/img/odoo/project.png" alt="Project logo" id="moved-7" />
-            </div>
-        </section>
     </div>
     {% endif %}
 

@@ -17,7 +17,7 @@ def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=N
     garbage_locations = []
     garbage_name = garbage_name
     garbage_loc_day_time = {}
-    
+
     if request.method == "POST":
 
         if city_id is None and zone_id is None:

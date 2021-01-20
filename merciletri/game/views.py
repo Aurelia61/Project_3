@@ -16,10 +16,14 @@ def game(request, garbage_id=None):
     selected_garbage=None
     image=None
     resultat=""
+    selected_destination= None
+
+    good_destination=""
+    sel_dect="OUPS"
 
     if request.method == "POST":
         ask_running = request.POST.get("ask_running", None)
-        selected_destination = request.POST.get ("selected_destination", None)
+        selected_destination = request.POST.get("selected_destination", None)
 
         if ask_running :
             running = True
@@ -38,15 +42,20 @@ def game(request, garbage_id=None):
             destinations = list(dict.fromkeys(destinations))
 
         if selected_destination:
-            import pdb; pdb.set_trace()
             dest_resultat = True
             garbage = Garbage.objects.filter(id=garbage_id)
+
             for garb in garbage:
-                if selected_destination == garb.destination:
+
+                #test
+                sel_dect = (selected_destination).replace("a","X")
+                
+                if sel_dect == garb.destination:
+                    good_destination = garb.destination
                     resultat = "C'est gagné !"
                 else:
+                    good_destination = garb.destination
                     resultat = "Perdu"
-
 
     return render(
         request, 
@@ -56,8 +65,13 @@ def game(request, garbage_id=None):
             "Destinations" : destinations,
             "Selected_garbage" : selected_garbage,
             "Image" : image,
-            "Garbage_id": garbage_id,
+            # "Garbage_id": garbage_id,
             "Dest_resultat" : dest_resultat,
             "Resultat" : resultat,
             "Running": running,
+            "selected_destination":selected_destination,
+            "good_destination": good_destination,
+            "sel_dect":sel_dect,
+            # "garbage": garbage,
+            # "test_dest_garb": test_dest_garb
         })

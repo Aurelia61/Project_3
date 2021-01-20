@@ -37,8 +37,9 @@ Où va ce déchet ?
             </select>
             <input type="submit" value="Je valide !">
         </form>
-        <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
-
+        <div class=map>
+            <img src="{{ city_image }}" alt="{{ City.name }}" title="{{ City.name }}">
+        </div>
 
         {% elif not garbage_locations %}
         <p>Ville sélectionnée : {{city_name}}</p>

@@ -8,6 +8,34 @@
 {% block game %}
 
     <form action="{% url 'game:game' %}" method="POST">
+<div class="game">
+    <div class=img-garbage> 
+        <img src="{{ Image.url }}" alt="{{ Selected_garbage.name }}" title="{{ Selected_garbage.name }}">
+    </div>
+<!-- {% for garb in Garbages %}
+        <ul>
+            <li value={{garb.name}}>{{garb.name}}</li>
+        </ul>
+    {%endfor%} -->
+
+    <!-- <form action="{% url 'game:game' %}" method="post">
+        {% csrf_token %}
+        <label for="garbage_select">Sélectionnez un déchet : </label>
+        <select name="selected_garbage">
+            {% for garb in Garbages %}
+                <option value={{garb.name}}> {{garb.name}} </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Je valide !">
+    </form> -->
+
+    <!-- {% for dest in Destinations %}
+        <ul>
+            <li value={{dest}}>{{dest}}</li>
+        </ul>
+    {%endfor%} -->
+
+    <form class='response' action="{% url 'game:game' %}" method="post">
         {% csrf_token %}
         <input class="" btn btn-primary" type="submit" value="JOUER" />
     </form>

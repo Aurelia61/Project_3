@@ -3,31 +3,47 @@ from search.models import City, CollectLocation, Zone, Garbage, GarbageType
 
 import random
 
-def game(request, dest_resulat=None):
 
-    # get image of one garbage randomly
-    selected_garbage = random.choice(Garbage.objects.all())
-    image = selected_garbage.image
-    good_answer = selected_garbage.destination
+def game(request, running=False, dest_resulat=None):
+    """
 
-    # get all the garbages
-    garbages = Garbage.objects.all()
+    """
 
-    # get all destinations without duplicates 
+    running = False
+    ask_running = False
+    garbages=None
     destinations = []
-    for dest in garbages:
-        destinations.append(dest.destination)
-    destinations = list(dict.fromkeys(destinations))
+    selected_garbage=None
+    image=None
+    resultat=""
 
-    resultat = ""
+    if not running :
+        if request.method == "POST":
+            ask_running = request.POST.get("ask_running", None)
+            if ask_running :
+                running = True
 
-    if request.method == "POST":
-        selected_destination = request.POST.get ("selected_destination", None)
-        dest_resulat = True
-        if selected_destination == good_answer:
-            resultat = "C'est gagné !"
-        else:
-            resultat = "Perdu"
+            elif running:
+                # get image of one garbage randomly
+                selected_garbage = random.choice(Garbage.objects.all())
+                image = selected_garbage.image
+                good_answer = selected_garbage.destination
+
+                # get all the garbages
+                garbages = Garbage.objects.all()
+
+                # get all destinations without duplicates 
+                for dest in garbages:
+                    destinations.append(dest.destination)
+                destinations = list(dict.fromkeys(destinations))
+
+                if request.method == "POST":
+                    selected_destination = request.POST.get ("selected_destination", None)
+                    dest_resulat = True
+                    if selected_destination == good_answer:
+                        resultat = "C'est gagné !"
+                    else:
+                        resultat = "Perdu"
 
 
     return render(
@@ -40,7 +56,7 @@ def game(request, dest_resulat=None):
             "Image" : image,
             "Dest_resultat" : dest_resulat,
             "Resultat" : resultat,
-
+            "Running": running,
         })
 
 

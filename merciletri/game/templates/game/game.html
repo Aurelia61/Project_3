@@ -36,8 +36,8 @@
                 {% csrf_token %}
                 <label for="destination_select">Où va ce déchet ? </label>
                 <select name="selected_destination">
-                    {% for dest in Destinations %}
-                        <option value={{dest}}> {{dest}} </option>
+                    {% for destination in Destinations %}
+                        <option value={{forloop.counter0}}> {{destination}} </option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Je valide !">
@@ -45,12 +45,10 @@
         </div>
 
     {% else %}
-        selected_destination = {{selected_destination}}
         <p> {{Resultat}} </p>
-        Good : {{good_destination}}
-        <p>{{sel_dect}}</p>
-        <!-- {{Garbage_id}} -->
-
+        {% if Good_destination %}
+            <p> La bonne réponse était : "{{Good_destination}}".</p>
+        {% endif %}
         <form class='response' action="{% url 'game:game' %}" method="post">
             {% csrf_token %}
             <input class="btn btn-primary" type="submit" name="ask_running" value="rejouer" />

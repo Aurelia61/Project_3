@@ -18,14 +18,12 @@ class City(models.Model):
         blank = True
     )
 
-
     def __str__(self):
         """
             
         """
 
         return f"{self.name}"
-
 
     class Meta:
         """
@@ -35,6 +33,7 @@ class City(models.Model):
         verbose_name = "Ville"
         verbose_name_plural = "Villes"
         ordering = ["name"]
+
 
 class Zone(models.Model):
     """
@@ -52,14 +51,12 @@ class Zone(models.Model):
         on_delete = models.PROTECT,   
     )
 
-
     def __str__(self):
         """
             
         """
 
         return f"{self.name}"
-
 
     class Meta:
         """
@@ -86,7 +83,6 @@ class GarbageType(models.Model):
         """
 
         return f"{self.name}"
-
 
     class Meta:
         """
@@ -132,7 +128,6 @@ class Garbage(models.Model):
         """
 
         return f"{self.name}"
-
 
     class Meta:
         """
@@ -180,7 +175,6 @@ class Time(models.Model):
         
         return f"{time}"
 
-
     class Meta:
         """
             
@@ -206,7 +200,6 @@ class Day(models.Model):
         """
 
         return f"{self.nameday}"
-
 
     class Meta:
         """
@@ -251,7 +244,6 @@ class CollectLocation(models.Model):
         """
 
         return f"{self.name}"
-
 
     class Meta:
         """

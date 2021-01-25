@@ -12,10 +12,6 @@ class Article(models.Model):
         max_length = 80
         )
 
-    # body = models.TextField(
-    #     "contenu"
-    # )
-
     body = RichTextField(blank=True, null=True)
 
     pickup_line = models.CharField(

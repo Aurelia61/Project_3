@@ -23,7 +23,7 @@ class BlogIndex(generic.ListView):
         articles_list_index = (Article.objects
             #todo ranger par date et non par id
             .order_by("-id")
-            # the 3 latest
+            # the 10 latest
             [:10]
         )
 

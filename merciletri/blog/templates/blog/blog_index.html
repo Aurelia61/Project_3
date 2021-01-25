@@ -1,11 +1,11 @@
 {% extends "home/main_layout.html" %}
 
 {%block navigator_title %}
-Merci le Tri - Articles
+    Merci le Tri - Articles
 {% endblock navigator_title %}
 
 {% block page_title %} 
-Voici les derniers articles
+    Voici les derniers articles
 {% endblock page_title %}
 
 
@@ -13,24 +13,14 @@ Voici les derniers articles
 {% block article_content %} 
 
     {% if latest_articles %}
-    <ul>
-        {% for article in latest_articles %}
-        <li>
-            <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
-            <p>{{article.pickup_line}}</p>
-        {% endfor %}
-        </li>
-    </ul>
+        <ul>
+            {% for article in latest_articles %}
+                <li>
+                    <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
+                    <p>{{article.pickup_line}}</p>
+                </li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
 {% endblock %}
-
-
-
-
-<!--* quand ce n'était pas des vues génériques -->
-<!-- {% for article in articles%}
-    <h3><a href="article/{{article.id}}"> {{article.title}} </a></h3>
-    <p>{{article.pickup_line}}</p>
-    <br>
-{%endfor%} -->

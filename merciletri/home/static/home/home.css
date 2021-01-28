@@ -24,7 +24,12 @@ a{
     color: var(--stromboli);
 }
 h2{
+    font-size: 3em;
+    color : var(--stromboli);
     font-family: 'Courgette', 'Oswald', Tahoma, sans-serif;
+}
+h3{
+    font-family: 'Courgette', 'Oswald', Tahoma, sans-serif;  
 }
 
 /*nav*/
@@ -73,10 +78,29 @@ h2{
     margin: 2rem auto;
 }
 .title{
+    font-size : 2em;
     text-align: center;
 }
 
-/* content */
+/* insert */
+#insert{
+    background-color: var(--crocodile);
+    margin: auto;
+}
+.insert p{
+    color: var(--floral);
+    font-family: 'Courgette', 'Oswald', Tahoma, sans-serif;
+    font-size: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+    text-align: center;
+}
+.insert img{
+    width: 80%;
+    margin-left: 50%;
+}
+
+/* article */
 .content{
     padding: 1.5rem 0rem;
 }
@@ -91,7 +115,7 @@ h2{
     width: 80%;
 }
 
-/* game page */
+/* game start page */
 .btn{
     margin-top: 160%;
     margin-bottom: 250%;
@@ -137,6 +161,21 @@ h2{
         margin-top: 2%;
     }
 
+/* game */
+.img-garbage img{
+    width:20%;
+    display: block;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.response{
+    display: grid;
+}
+.response label {
+    text-align: center;
+}
+
 /* card */
 #card{
     margin: 2rem 0rem;
@@ -144,7 +183,6 @@ h2{
 .card-container{
     border:1px solid var(--green);
     border-radius: 10px;
-    min-height: 55vh;
 }
 .card-img{
     text-align: center;
@@ -197,13 +235,15 @@ h2{
 /* search */
 #form{
     background-color: var(--splash);
-    padding: 3rem;
+    margin: auto;
+    padding: 2rem;
+    width: 70%;
 }
 form{
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    display: flex;
     font-family: 'Oswald', Tahoma, sans-serif;
+    justify-content: space-around;
 }
 fieldset{
     width: 75%;
@@ -250,21 +290,6 @@ button:hover{
     margin-right: auto;
 }
 
-/* game*/
-.img-garbage img{
-    width:20%;
-    display: block;
-    margin-bottom: 3%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.response{
-    display: grid;
-}
-.response label {
-    text-align: center;
-}
-
 /* footer */
 #footer{
     margin-top: 3rem;
@@ -302,6 +327,7 @@ width: 100%;
     font-family: 'Oswald', Tahoma, sans-serif;
     font-size: 0.8rem;
 }
+
 @media screen and (max-width:768px){
     .navbar-toggler{
         font-size: 1.8rem;
@@ -371,4 +397,15 @@ width: 100%;
     .footer-icon{
         margin: 0.5rem;
     }
+    .insert p{
+        color: var(--floral);
+        font-family: 'Courgette', 'Oswald', Tahoma, sans-serif;
+        font-size: 0.8em;
+        text-align: center;
+    }
+    .insert img{
+        width: 50%;
+        margin-left: 20%
+    }
+    
 }

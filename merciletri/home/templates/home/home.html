@@ -6,7 +6,19 @@
 {% endblock navigator_title %}
 
 
-{% block page_title %} La première app qui t'aide à trier tes déchets dans la bonne poubelle {% endblock page_title %}
+
+
+{% block insert_content %}
+<div class="insert row">
+    <div class="col-lg-2 col-md-12">
+        <img src="{% static 'home/images/onlylogo.png' %}" alt='Logo Merci le Tri'/>
+    </div>
+    <div class="col-lg-10 col-md-12">
+        <p>La première application web qui t'aide à trier tes déchets dans la bonne poubelle</p>
+    </div>
+</div>
+{% endblock %}
+
 
 {% block search_top %}
 <!--search-->
@@ -49,7 +61,7 @@
                 <label for="garbage_select">Sélectionnez un déchet : </label>
                 <select name="selected_garbage">
                     {% for garbage in garbages %}
-                    <option value={{garbage.name}}> {{garbage.name}} </option>
+                        <option value={{garbage.id}}> {{garbage.name}} </option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Je valide !">

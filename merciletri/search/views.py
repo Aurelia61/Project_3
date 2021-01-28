@@ -51,12 +51,17 @@ def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=N
             type_id = None
 
             for garbage in garbages :
-                selected_garbage_without_spaces =(selected_garbage).join("")
-                garbage_name_without_spaces = (garbage.name).join("")
-                if selected_garbage_without_spaces == garbage_name_without_spaces :
+                if selected_garbage == garbage.id:
                     type_id = garbage.garbagetype_id
                     garbage_name = garbage.name
                     break;
+
+                # selected_garbage_without_spaces =(selected_garbage).join("")
+                # garbage_name_without_spaces = (garbage.name).join("")
+                # if selected_garbage_without_spaces == garbage_name_without_spaces :
+                #     type_id = garbage.garbagetype_id
+                #     garbage_name = garbage.name
+                #     break;
 
             collectlocation = CollectLocation.objects.filter(zone=zone_id)
 

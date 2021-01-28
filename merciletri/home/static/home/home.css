@@ -101,6 +101,13 @@ h3{
 }
 
 /* article */
+#article h3{
+    font-size: 1.5em;
+    margin-top:0.5em;
+}
+#article p{
+    margin-left:2.3em;
+}
 .content{
     padding: 1.5rem 0rem;
 }
@@ -175,6 +182,15 @@ h3{
 .response label {
     text-align: center;
 }
+#game p{
+    text-align: center;
+    font-family: 'Oswald', Tahoma, sans-serif;
+    font-size:3em;
+}
+#game li{
+    text-align: center;
+}
+
 
 /* card */
 #card{
@@ -217,6 +233,7 @@ h3{
 .card-infos-title{
     padding: 2rem 1rem;
     font-size: 1.5rem;
+    max-height: 4.8em;
 }
 .card-infos-button{
     padding-left: 1rem;
@@ -407,5 +424,4 @@ width: 100%;
         width: 50%;
         margin-left: 20%
     }
-    
 }

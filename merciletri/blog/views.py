@@ -17,7 +17,7 @@ class BlogIndex(generic.ListView):
 
     def get_queryset(self):
         """
-            get and return the last 3 articles registred in the databases
+            get and return the last 10 articles registred in the databases
         """
 
         articles_list_index = (Article.objects
@@ -27,7 +27,7 @@ class BlogIndex(generic.ListView):
             [:10]
         )
 
-        # Return the list of the 3 lastest article
+        # Return the list of the 10 lastest articles
         return articles_list_index
 
 

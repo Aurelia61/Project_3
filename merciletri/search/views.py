@@ -50,7 +50,6 @@ def search_city(request, city_id=None, zone_id=None, city_name=None, zone_name=N
 
             type_id = None
 
-            #todo faire des compréhensions de liste
             for garbage in garbages :
                 selected_garbage_without_spaces =(selected_garbage).join("")
                 garbage_name_without_spaces = (garbage.name).join("")
